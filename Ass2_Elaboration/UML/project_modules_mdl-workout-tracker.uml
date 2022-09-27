@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>MODULES</ID>
+  <OriginalElement>mdl-workout-tracker</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">mdl-workout-tracker</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="53.0" y="11.0" />
+  <SelectedNodes>
+    <node>mdl-workout-tracker</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Libraries</Category>
+    <Category>Show Borders</Category>
+    <Category>Show Neighbours of Selected Nodes</Category>
+    <Category>Show Paths: Root -&gt; Selection</Category>
+    <Category>Test dependencies</Category>
+  </Categories>
+</Diagram>
+

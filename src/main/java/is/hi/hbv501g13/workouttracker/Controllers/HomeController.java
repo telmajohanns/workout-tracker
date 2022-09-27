@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/")
-    public String HomeController(){
+    public String HomeController(){ // Error: Method name 'HomeController' is the same as its class name. Rename this method to prevent any misunderstanding or make it a constructor.
+
         //Business logic
         //Call a method in a Service Class
         //Add some data to the Model
