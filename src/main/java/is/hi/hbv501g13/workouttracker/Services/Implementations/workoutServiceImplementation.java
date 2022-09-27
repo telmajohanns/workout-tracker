@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class WorkoutServiceImpementation implements WorkoutService {
+public class workoutServiceImplementation implements WorkoutService {
     private List<Workout> workoutRepository = new ArrayList<>();
     private int id_counter = 0;
 
     @Autowired
-    public WorkoutServiceImpementation() {
+    public workoutServiceImplementation() {
         //Create a random workout for our repository, removed when we get a DB
     }
 
