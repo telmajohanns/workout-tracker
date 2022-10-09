@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>SpringLocalModels</ID>
+  <OriginalElement>module=workout-tracker</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">module=workout-tracker</node>
+    <node x="186.0" y="0.0">fileset=workout-tracker/WorkoutTrackerApplication</node>
+    <node x="425.0" y="0.0">is.hi.hbv501g13.workouttracker.WorkoutTrackerApplication</node>
+    <node x="664.0" y="0.0">is.hi.hbv501g13.workouttracker.Controllers.HomeController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="is.hi.hbv501g13.workouttracker.WorkoutTrackerApplication" target="is.hi.hbv501g13.workouttracker.Controllers.HomeController" relationship="">
+      <point x="79.5" y="-0.0" />
+      <point x="-52.0" y="-0.0" />
+    </edge>
+    <edge source="fileset=workout-tracker/WorkoutTrackerApplication" target="is.hi.hbv501g13.workouttracker.WorkoutTrackerApplication" relationship="">
+      <point x="79.5" y="-0.0" />
+      <point x="-79.5" y="-0.0" />
+    </edge>
+    <edge source="module=workout-tracker" target="fileset=workout-tracker/WorkoutTrackerApplication" relationship="">
+      <point x="53.0" y="-0.0" />
+      <point x="-79.5" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="384.0" y="11.0" />
+  <SelectedNodes>
+    <node>module=workout-tracker</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Show Borders</Category>
+    <Category>Show filesets as groups</Category>
+    <Category>Show library models</Category>
+  </Categories>
+</Diagram>
+
