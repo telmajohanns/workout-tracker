@@ -1,19 +1,32 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
-public class Exercise {
-    private String name;
-    private int sets;
-    private int reps;
-    private int weight;
+import javax.persistence.Entity;
+import java.util.ArrayList;
 
-    public Exercise(String name) {
-        this.name = name;
+@Entity
+public class Exercise {
+    private Long ID;
+    private String userID;
+    private String name;
+    private ArrayList<Integer> sets = new ArrayList<Integer>();
+
+    public Exercise() {
     }
 
-    public Exercise(int sets, int reps, int weight) {
-        this.sets = sets;
-        this.reps = reps;
-        this.weight = weight;
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getName() {
@@ -24,27 +37,17 @@ public class Exercise {
         this.name = name;
     }
 
-    public int getSets() {
+    public ArrayList<Integer> getSets() {
         return sets;
     }
 
-    public void setSets(int sets) {
+    public void setSets(ArrayList<Integer> sets) {
         this.sets = sets;
     }
 
-    public int getReps() {
-        return reps;
-    }
-
-    public void setReps(int reps) {
-        this.reps = reps;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public Exercise(String userID, String name, ArrayList<Integer> sets) {
+        this.userID = userID;
+        this.name = name;
+        this.sets = sets;
     }
 }

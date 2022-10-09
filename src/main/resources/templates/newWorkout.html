@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New workout</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/addworkout}" th:object="${workout}" method="post">
+    <label for="date">Date</label>
+    <input type="text" th:field="*{date}" id="date" placeholder="Date">
+    <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
+    //Vantar meira dót til að láta þetta virka rétt en þetta er byrjun.
+    <input type="submit" value="Add workout">
+</form>
+
+</body>
+</html>
