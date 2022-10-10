@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @Service
-public class WorkoutServiceImpementation implements WorkoutService {
+public class workoutServiceImplementation implements WorkoutService {
     //Add link to JPA here
     private ArrayList<Workout> workoutRepository = new ArrayList<>();
     private long id_counter = 0;
 
     private ArrayList<Exercise> exercises2 = new ArrayList<>(Arrays.asList(new Exercise()));
     @Autowired
-    public WorkoutServiceImpementation() {
+    public workoutServiceImplementation() {
         //Create a random workout for our repository, removed when we get a DB
         workoutRepository.add(new Workout(java.time.LocalDate.now(), exercises2));
         workoutRepository.add(new Workout(java.time.LocalDate.now(), exercises2));
