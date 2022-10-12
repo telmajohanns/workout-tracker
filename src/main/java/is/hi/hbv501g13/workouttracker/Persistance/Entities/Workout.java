@@ -1,14 +1,21 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Entity
+@Table(name = "workouts")
 public class Workout {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
     private LocalDate date;
+    @ManyToMany(fetch = FetchType.LAZY)
     private ArrayList<Exercise> exercises = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
 
     public Workout() {
     }
