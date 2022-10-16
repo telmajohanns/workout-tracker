@@ -1,6 +1,5 @@
 package is.hi.hbv501g13.workouttracker.Services.Implementations;
 
-import is.hi.hbv501g13.workouttracker.Persistance.Entities.Exercise;
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.Workout;
 import is.hi.hbv501g13.workouttracker.Persistance.Repositories.WorkoutRepository;
 import is.hi.hbv501g13.workouttracker.Services.WorkoutService;
@@ -8,17 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class WorkoutServiceImpementation implements WorkoutService {
+public class WorkoutServiceImplementation implements WorkoutService {
 
     private WorkoutRepository workoutRepository;
 
     @Autowired
-    public WorkoutServiceImpementation(WorkoutRepository workoutRepository) {
+    public WorkoutServiceImplementation(WorkoutRepository workoutRepository) {
        this.workoutRepository = workoutRepository;
     }
 

@@ -56,7 +56,7 @@ public class Exercise {
         this.name = name;
     }
 
-    public ArrayList<Integer> getSets() {
+    public List<Integer> getSets() {
         return sets;
     }
 
