@@ -1,7 +1,7 @@
 package is.hi.hbv501g13.workouttracker.Controllers;
 
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.Workout;
-import is.hi.hbv501g13.workouttracker.Services.WorkoutService;
+import is.hi.hbv501g13.workouttracker.Services.Implementations.WorkoutServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +14,10 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private WorkoutService workoutService;
+    private WorkoutServiceImplementation workoutService;
 
     @Autowired
-    public HomeController(WorkoutService workoutService){
+    public HomeController(WorkoutServiceImplementation workoutService){
         this.workoutService = workoutService;
     }
 
