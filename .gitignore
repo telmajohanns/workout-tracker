@@ -13,7 +13,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-.application.properties
+workout-tracker/src/main/resources/application.properties
 
 # External tool builders
 .externalToolBuilders/
