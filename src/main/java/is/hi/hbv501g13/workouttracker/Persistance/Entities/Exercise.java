@@ -1,16 +1,35 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "exercises")
 public class Exercise {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     private String userID;
     private String name;
-    private ArrayList<Integer> sets = new ArrayList<Integer>();
+    private List<Integer> sets = new ArrayList<Integer>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
     public Exercise() {
+    }
+
+    public Exercise(String userID, String name, User user) {
+        this.userID = userID;
+        this.name = name;
+        this.user = user;
+    }
+
+    public Exercise(String userID, String name, ArrayList<Integer> sets, User user) {
+        this.userID = userID;
+        this.name = name;
+        this.sets = sets;
+        this.user = user;
     }
 
     public Long getID() {
@@ -37,7 +56,7 @@ public class Exercise {
         this.name = name;
     }
 
-    public ArrayList<Integer> getSets() {
+    public List<Integer> getSets() {
         return sets;
     }
 
@@ -45,9 +64,11 @@ public class Exercise {
         this.sets = sets;
     }
 
-    public Exercise(String userID, String name, ArrayList<Integer> sets) {
-        this.userID = userID;
-        this.name = name;
-        this.sets = sets;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
