@@ -3,6 +3,7 @@ package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "workouts")
@@ -12,7 +13,7 @@ public class Workout {
     private long ID;
     private LocalDate date;
     @ManyToMany(fetch = FetchType.LAZY)
-    private ArrayList<Exercise> exercises = new ArrayList<>();
+    private List<Exercise> exercises = new ArrayList<>();
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
@@ -20,7 +21,7 @@ public class Workout {
     public Workout() {
     }
 
-    public Workout(LocalDate date, ArrayList<Exercise> exercises) {
+    public Workout(LocalDate date, List<Exercise> exercises) {
         this.date = date;
         this.exercises = exercises;
     }
@@ -41,11 +42,11 @@ public class Workout {
         this.date = date;
     }
 
-    public ArrayList<Exercise> getExercises() {
+    public List<Exercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(ArrayList<Exercise> exercises) {
+    public void setExercises(List<Exercise> exercises) {
         this.exercises = exercises;
     }
 }
