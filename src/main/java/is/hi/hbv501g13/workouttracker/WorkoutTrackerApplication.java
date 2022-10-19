@@ -4,9 +4,11 @@ package is.hi.hbv501g13.workouttracker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({ "is.hi.hbv501g13.workouttracker.Persistance.Repositories"})
+// @EnableJpaRepositories(basePackages = "is.hi.hbv501g13.workouttracker.Persistance.Repositories")
+//@ComponentScan({ "is.hi.hbv501g13.workouttracker.Persistance.Repositories"})
 public class WorkoutTrackerApplication {
 
     public static void main(String[] args) {
