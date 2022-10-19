@@ -1,8 +1,8 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "exercises")
@@ -12,20 +12,16 @@ public class Exercise {
     private Long ID;
     private String userID;
     private String name;
-    private List<Integer> sets = new ArrayList<Integer>();
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Embedded
+    private Sett sets;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Exercise() {
     }
 
-    public Exercise(String userID, String name, User user) {
-        this.userID = userID;
-        this.name = name;
-        this.user = user;
-    }
-
-    public Exercise(String userID, String name, ArrayList<Integer> sets, User user) {
+    public Exercise(String userID, String name, Sett sets, User user) {
         this.userID = userID;
         this.name = name;
         this.sets = sets;
@@ -56,11 +52,11 @@ public class Exercise {
         this.name = name;
     }
 
-    public List<Integer> getSets() {
+    public Sett getSets() {
         return sets;
     }
 
-    public void setSets(ArrayList<Integer> sets) {
+    public void setSets(Sett sets) {
         this.sets = sets;
     }
 
