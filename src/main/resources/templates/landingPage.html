@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker</title>
+</head>
+<body>
+
+<div>
+    <h2>Users</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Users</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="workout : ${workouts}">
+            <td th:text="${workout.date}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

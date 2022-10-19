@@ -11,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
 
-    private String userNAme;
+    private String username;
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -26,8 +26,48 @@ public class User {
     public User() {
     }
 
-    public User(String userNAme, String password) {
-        this.userNAme = userNAme;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(List<Workout> workouts) {
+        this.workouts = workouts;
+    }
+
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises = exercises;
+    }
+
+    public List<Template> getTemplates() {
+        return templates;
+    }
+
+    public void setTemplates(List<Template> templates) {
+        this.templates = templates;
     }
 }
