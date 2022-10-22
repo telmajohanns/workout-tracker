@@ -6,13 +6,25 @@ import javax.persistence.*;
 @Table(name = "setts")
 public class Sett {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private Workout workout;
+    private String exerciseName;
     private int setNr;
     private int wightDist;
     private int repsTime;
+
+    public Sett() {
+    }
+
+    public Sett(Workout workout, String exerciseName, int setNr, int wightDist, int repsTime) {
+        this.workout = workout;
+        this.exerciseName = exerciseName;
+        this.setNr = setNr;
+        this.wightDist = wightDist;
+        this.repsTime = repsTime;
+    }
 
     public Long getId() {
         return id;
@@ -22,14 +34,20 @@ public class Sett {
         this.id = id;
     }
 
-
-    public Sett() {
+    public Workout getWorkout() {
+        return workout;
     }
 
-    public Sett(int setNr, int wightDist, int repsTime) {
-        this.setNr = setNr;
-        this.wightDist = wightDist;
-        this.repsTime = repsTime;
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
+    }
+
+    public String getExerciseName() {
+        return exerciseName;
+    }
+
+    public void setExerciseName(String exerciseName) {
+        this.exerciseName = exerciseName;
     }
 
     public int getSetNr() {
