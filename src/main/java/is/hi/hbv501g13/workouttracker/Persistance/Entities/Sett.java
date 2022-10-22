@@ -1,12 +1,27 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
-@Embeddable
+@Entity
+@Table(name = "setts")
 public class Sett {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private int setNr;
     private int wightDist;
     private int repsTime;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public Sett() {
     }
