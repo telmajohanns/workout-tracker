@@ -12,18 +12,18 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
     private LocalDate date;
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Exercise> exercises = new ArrayList<>();
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
-
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Sett> sets = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private User userID;
 
     public Workout() {
     }
 
-    public Workout(LocalDate date, List<Exercise> exercises) {
+    public Workout(LocalDate date, List<Sett> sets, User userID) {
         this.date = date;
-        this.exercises = exercises;
+        this.sets = sets;
+        this.userID = userID;
     }
 
     public long getID() {
@@ -42,11 +42,19 @@ public class Workout {
         this.date = date;
     }
 
-    public List<Exercise> getExercises() {
-        return exercises;
+    public List<Sett> getSets() {
+        return sets;
     }
 
-    public void setExercises(List<Exercise> exercises) {
-        this.exercises = exercises;
+    public void setSets(List<Sett> sets) {
+        this.sets = sets;
+    }
+
+    public User getUserID() {
+        return userID;
+    }
+
+    public void setUserID(User userID) {
+        this.userID = userID;
     }
 }

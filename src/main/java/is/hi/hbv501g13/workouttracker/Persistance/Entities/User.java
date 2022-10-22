@@ -15,13 +15,13 @@ public class User {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Workout> workouts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Exercise> exercises = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Template> templates = new ArrayList<>();
 
     public User() {
