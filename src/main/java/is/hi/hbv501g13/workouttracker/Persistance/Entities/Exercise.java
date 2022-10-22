@@ -10,22 +10,17 @@ public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    private String userID;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private User userID;
     private String name;
-    @Embedded
-    private Sett sets;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+
 
     public Exercise() {
     }
 
-    public Exercise(String userID, String name, Sett sets, User user) {
+    public Exercise(User userID, String name) {
         this.userID = userID;
         this.name = name;
-        this.sets = sets;
-        this.user = user;
     }
 
     public Long getID() {
@@ -36,11 +31,11 @@ public class Exercise {
         this.ID = ID;
     }
 
-    public String getUserID() {
+    public User getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(User userID) {
         this.userID = userID;
     }
 
@@ -50,21 +45,5 @@ public class Exercise {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Sett getSets() {
-        return sets;
-    }
-
-    public void setSets(Sett sets) {
-        this.sets = sets;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
