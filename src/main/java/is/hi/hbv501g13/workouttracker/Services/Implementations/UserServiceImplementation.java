@@ -40,4 +40,9 @@ public class UserServiceImplementation implements UserService {
         }
         return null;
     }
+
+    @Override
+    public User findByID(long id) {
+        return userRepository.findByID(id);
+    }
 }
