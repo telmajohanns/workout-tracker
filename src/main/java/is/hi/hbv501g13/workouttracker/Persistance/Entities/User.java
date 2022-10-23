@@ -1,5 +1,8 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

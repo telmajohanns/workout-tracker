@@ -1,32 +1,36 @@
 -- dummy data for sql
 INSERT INTO
-    users(username, password)
+    users(id, username, password)
 VALUES
     (
-     'admin'
-     'admin'
+     '1',
+     'admina',
+     'admin',
     );
 
 INSERT INTO
-    users(username, password)
+    users(id, username, password)
 VALUES
     (
-        'user1'
-        'password'
+     '2',
+    'user1',
+    'password',
     );
 
 INSERT INTO
-    users(username, password)
+    users(id, username, password)
 VALUES
     (
-        'user2'
-        'password123'
+        '3',
+        'user2',
+        'password123',
     );
 
 INSERT INTO
-    users(username, password)
+    users(id, username, password)
 VALUES
     (
-        'admin'
-        'admin'
+        '4',
+        'admin',
+        'admin',
     );
