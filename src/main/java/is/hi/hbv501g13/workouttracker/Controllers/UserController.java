@@ -1,7 +1,7 @@
 package is.hi.hbv501g13.workouttracker.Controllers;
 
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.User;
-import is.hi.hbv501g13.workouttracker.Services.UserService;
+import is.hi.hbv501g13.workouttracker.Services.Implementations.UserServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
-    private UserService userService;
+    private UserServiceImplementation userService;
 
     @Autowired
-    public UserController(UserService userService){
+    public UserController(UserServiceImplementation userService){
         this.userService = userService;
     }
 
