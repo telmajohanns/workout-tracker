@@ -26,6 +26,11 @@ public class ExerciseServiceImplementation implements ExerciseService {
         return exerciseRepository.findAll();
     }
 
+    public boolean checkExists(String name) {
+        if (findByName(name) == null) {return false;}
+        else {return true;}
+    }
+
     @Override
     public Exercise findByName(String name){
         return exerciseRepository.findByName(name);
