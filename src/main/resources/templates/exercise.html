@@ -1,0 +1,13 @@
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create exercise</title>
+</head>
+<body>
+<h2>Create new exercise</h2>
+<form action="#" th:action="@{/exercise}" th:object="${exercise}" method="post">
+    <input type="text" name="exercise" id="exercise" th:field="*{exercise}"/>
+    <p><input type="submit" value="Save" />
+</form>
+</body>
+</html>
