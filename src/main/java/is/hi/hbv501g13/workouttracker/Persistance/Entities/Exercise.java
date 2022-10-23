@@ -11,15 +11,17 @@ public class Exercise {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private User userID;
+    private User user;
+    private Long userID;
     private String name;
 
 
     public Exercise() {
     }
 
-    public Exercise(User userID, String name) {
-        this.userID = userID;
+    public Exercise(User user, String name) {
+        this.user = user;
+        this.userID = this.user.getID();
         this.name = name;
     }
 
@@ -29,14 +31,6 @@ public class Exercise {
 
     public void setID(Long ID) {
         this.ID = ID;
-    }
-
-    public User getUserID() {
-        return userID;
-    }
-
-    public void setUserID(User userID) {
-        this.userID = userID;
     }
 
     public String getName() {
