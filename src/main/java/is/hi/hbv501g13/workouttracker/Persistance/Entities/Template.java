@@ -14,8 +14,8 @@ public class Template {
 
     private String name;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private User user;
-    private Long userID;
+    private User userID;
+    //private Long userID;
 
 
     @ManyToMany(mappedBy = "userID", fetch = FetchType.LAZY)
@@ -26,8 +26,8 @@ public class Template {
 
     public Template(String name, User user, List<Exercise> exercises) {
         this.name = name;
-        this.user = user;
-        this.userID = user.getID();
+        this.userID = user;
+        //this.userID = user.getID();
         this.exercises = exercises;
     }
 

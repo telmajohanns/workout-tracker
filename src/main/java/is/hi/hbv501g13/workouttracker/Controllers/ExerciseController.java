@@ -24,25 +24,11 @@ public class ExerciseController {
     private Long userID;
     private User user;
     //private UserServiceImplementation userService;
-    private Exercise exercise;
+    //private Exercise exercise;
 
     @Autowired
     public ExerciseController(ExerciseServiceImplementation exerciseService) {
         this.exerciseService = exerciseService;
-    }
-
-    /**
-     * Save exercise to users collection
-     * @param actionEvent User presses "save" button
-     */
-    public void saveExercise(ActionEvent actionEvent) {
-        if (!exerciseService.checkExists("dummy exercise")) {
-            exercise = new Exercise(user, "dummy exercise");
-            exerciseService.save(exercise);
-        }
-        else {
-            System.out.println("ERROR: Exercise exists in database");
-        }
     }
 
     @RequestMapping(value = "/exercise", method = RequestMethod.GET)
@@ -50,19 +36,24 @@ public class ExerciseController {
         return "exercise";
     }
 
-   /* @RequestMapping(value = "/exercise", method = RequestMethod.POST)
-    public String exercisePOST(BindingResult result, Model model, HttpSession session){
+    @RequestMapping(value = "/exercise", method = RequestMethod.POST)
+    public String exercisePOST(Exercise exercise, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
-            return "exercise";
+            return "redirect:/exercise"; // ATH
         }
-        Exercise exists = exerciseService.findByID(exercise.getID());
-        if (exists != null) {
-            session.setAttribute("ExerciseCreated", exercise);
-            model.addAttribute("ExerciseCreated", exercise);
-            return "ExerciseCreated";
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        if (sessionUser != null) {
+            exercise.setUser(sessionUser);
+            if (!exerciseService.checkExists(exercise.getName())) {
+                exerciseService.save(exercise);
+                System.out.println("Successsss");
+                return "redirect:/exercise";
+            }
         }
-        return  "redirect:/";
-    }*/
+
+        return "redirect:/exercise";
+
+    }
 
 
 }
