@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -20,6 +21,11 @@ public class HomeController {
     public String landingPage(){
         User v = new User("admin", "admin"); //Dummy user, remove later
         userService.save(v);
-        return "landingPage";
+        return "redirect:/login";
+    }
+
+    @RequestMapping(value = "/homepage")
+    public String homePage(){
+        return "/homePage";
     }
 }
