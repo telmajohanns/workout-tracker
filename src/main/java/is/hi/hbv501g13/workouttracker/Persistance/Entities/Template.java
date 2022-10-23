@@ -13,18 +13,18 @@ public class Template {
     private long ID;
 
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private User userID;
 
-    @ManyToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "userID", fetch = FetchType.LAZY)
     private List<Exercise> exercises = new ArrayList<>();
 
     public Template() {
     }
 
-    public Template(String name, User user, List<Exercise> exercises) {
+    public Template(String name, User userID, List<Exercise> exercises) {
         this.name = name;
-        this.user = user;
+        this.userID = userID;
         this.exercises = exercises;
     }
 
@@ -44,12 +44,12 @@ public class Template {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserID() {
+        return userID;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserID(User userID) {
+        this.userID = userID;
     }
 
     public List<Exercise> getExercises() {
