@@ -11,14 +11,14 @@ import java.util.List;
 
 @Service
 public class WorkoutServiceImplementation implements WorkoutService {
-//Steinunn
+
 
     private WorkoutRepository workoutRepository;
 
 
     @Autowired
     public WorkoutServiceImplementation(WorkoutRepository workoutRepository) {
-       this.workoutRepository = workoutRepository;
+        this.workoutRepository = workoutRepository;
     }
 
 
