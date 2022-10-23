@@ -6,8 +6,8 @@
 <body>
 <h2>Create new exercise</h2>
 <form action="#" th:action="@{/exercise}" th:object="${exercise}" method="post">
-    <input type="text" name="exercise" id="exercise" th:field="*{exercise}"/>
-    <p><input type="submit" value="Save" />
+    <input type="text" name="name" id="name" th:field="*{name}"/>
+    <input type="submit" value="Save" />
 </form>
 </body>
 </html>

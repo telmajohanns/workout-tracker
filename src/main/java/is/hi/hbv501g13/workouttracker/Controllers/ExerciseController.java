@@ -46,11 +46,11 @@ public class ExerciseController {
     }
 
     @RequestMapping(value = "/exercise", method = RequestMethod.GET)
-    public String exerciseGET(){
+    public String exerciseGET(Exercise exercise){
         return "exercise";
     }
 
-    @RequestMapping(value = "/exercise", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/exercise", method = RequestMethod.POST)
     public String exercisePOST(BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
             return "exercise";
@@ -62,7 +62,7 @@ public class ExerciseController {
             return "ExerciseCreated";
         }
         return  "redirect:/";
-    }
+    }*/
 
 
 }
