@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>New Template</title>
+</head>
+<body>
+
+<div id="mittForm" >
+
+</div>
+<form action="#" th:action="@{/template}" th:object="${template}" method="post">
+  <p>Template name: </p><input type="text" name="name" id="name" th:field = "*{name}"/>
+  <br><br>
+  <div id="container_dd">
+    <!--<div id="dropdown">
+      <select id="exercise" name="exercise">
+        <option value="Squats">Squats</option>
+      </select>
+      <br><br>
+    </div>-->
+  </div>
+
+  <input type="submit" value="Save template" id="submitButton"/>
+</form>
+<button onclick="addDropdown()">Add Exercise</button>
+
+</body>
+<script>
+  function addDropdown() {
+
+    var newSelect = document.createElement("select");
+
+    var newDD = document.createElement("div");
+
+    newDD.setAttribute("id", "dropdown");
+    newSelect.setAttribute("id", "exercise");
+    newSelect.setAttribute("name", "exercise");
+
+    for (i=0; i<5; i++) {
+      var newOption = document.createElement("option");
+      var str = "prufa" + i.toString();
+      newOption.text = str;
+      newOption.value = i;
+      newSelect.add(newOption);
+
+    }
+
+    newDD.appendChild(newSelect);
+    newDD.appendChild(document.createElement("br"));
+    document.getElementById("container_dd").appendChild(newDD);
+
+  }
+</script>
+</html>
