@@ -6,9 +6,11 @@ import is.hi.hbv501g13.workouttracker.Persistance.Entities.Workout;
 import is.hi.hbv501g13.workouttracker.Persistance.Repositories.SettRepository;
 import is.hi.hbv501g13.workouttracker.Services.SettService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SettServiceImplementation implements SettService {
 
     private SettRepository settRepository;
