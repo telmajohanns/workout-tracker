@@ -6,21 +6,11 @@
 </head>
 <body>
 
-<div id="mittForm" >
 
-</div>
 <form action="#" th:action="@{/template}" th:object="${template}" method="post">
   <p>Template name: </p><input type="text" name="name" id="name" th:field = "*{name}"/>
   <br><br>
-  <div id="container_dd">
-    <!--<div id="dropdown">
-      <select id="exercise" name="exercise">
-        <option value="Squats">Squats</option>
-      </select>
-      <br><br>
-    </div>-->
-  </div>
-
+  <div id="container_dd"></div>
   <input type="submit" value="Save template" id="submitButton"/>
 </form>
 <button onclick="addDropdown()">Add Exercise</button>
@@ -30,7 +20,6 @@
   function addDropdown() {
 
     var newSelect = document.createElement("select");
-
     var newDD = document.createElement("div");
 
     newDD.setAttribute("id", "dropdown");
@@ -43,7 +32,6 @@
       newOption.text = str;
       newOption.value = i;
       newSelect.add(newOption);
-
     }
 
     newDD.appendChild(newSelect);
