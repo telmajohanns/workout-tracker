@@ -47,6 +47,8 @@ public class WorkoutController {
             workout.setUserID(user);
             workout.setSets(sets);
 
+
+            workoutService.save(workout);
         }
         return "/homePage";
     }

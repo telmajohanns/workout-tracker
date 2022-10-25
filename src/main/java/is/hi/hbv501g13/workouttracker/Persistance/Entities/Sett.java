@@ -10,7 +10,7 @@ public class Sett {
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Workout workout;
-    private String exerciseName;
+    private String exercise;
     private int setNr;
     private int weightDist;
     private int repsTime;
@@ -20,7 +20,7 @@ public class Sett {
 
     public Sett(Workout workout, String exerciseName, int setNr, int wightDist, int repsTime) {
         this.workout = workout;
-        this.exerciseName = exerciseName;
+        this.exercise = exerciseName;
         this.setNr = setNr;
         this.weightDist = wightDist;
         this.repsTime = repsTime;
@@ -42,12 +42,12 @@ public class Sett {
         this.workout = workout;
     }
 
-    public String getExerciseName() {
-        return exerciseName;
+    public String getExercise() {
+        return exercise;
     }
 
-    public void setExerciseName(String exerciseName) {
-        this.exerciseName = exerciseName;
+    public void setExercise(String exercise) {
+        this.exercise = exercise;
     }
 
     public int getSetNr() {
