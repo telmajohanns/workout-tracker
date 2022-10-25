@@ -18,7 +18,7 @@ public class Template {
     //private Long userID;
 
 
-    @ManyToMany(mappedBy = "userID", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userID", fetch = FetchType.LAZY)
     private List<Exercise> exercises = new ArrayList<>();
 
     public Template() {
@@ -30,6 +30,8 @@ public class Template {
         //this.userID = user.getID();
         this.exercises = exercises;
     }
+
+
 
     public long getID() {
         return ID;
@@ -52,6 +54,9 @@ public class Template {
     }
 
     public void setExercises(List<Exercise> exercises) {
-        this.exercises = exercises;
+        this.exercises.addAll(exercises);
+        //this.exercises = exercises;
     }
+
+    public void setUser(User user) {this.userID = user;}
 }

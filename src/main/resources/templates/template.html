@@ -10,7 +10,13 @@
 <form action="#" th:action="@{/template}" th:object="${template}" method="post">
   <p>Template name: </p><input type="text" name="name" id="name" th:field = "*{name}"/>
   <br><br>
-  <div id="container_dd"></div>
+  <div id="container_dd">
+    <select id="exercises" name="exercise" multiple="true" >
+      <option value="0" >Fyrsti kassinn ehv</option>
+      <option value="1">Annar</option>
+    </select>
+    <br><br>
+  </div>
   <input type="submit" value="Save template" id="submitButton"/>
 </form>
 <button onclick="addDropdown()">Add Exercise</button>
@@ -18,6 +24,8 @@
 </body>
 <script>
   function addDropdown() {
+
+    //var ehv = document.getElementById("prufuid");
 
     var newSelect = document.createElement("select");
     var newDD = document.createElement("div");
@@ -35,6 +43,7 @@
     }
 
     newDD.appendChild(newSelect);
+    newDD.appendChild(document.createElement("br"));
     newDD.appendChild(document.createElement("br"));
     document.getElementById("container_dd").appendChild(newDD);
 
