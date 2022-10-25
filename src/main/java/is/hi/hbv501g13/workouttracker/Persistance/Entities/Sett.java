@@ -12,7 +12,7 @@ public class Sett {
     private Workout workout;
     private String exerciseName;
     private int setNr;
-    private int wightDist;
+    private int weightDist;
     private int repsTime;
 
     public Sett() {
@@ -22,7 +22,7 @@ public class Sett {
         this.workout = workout;
         this.exerciseName = exerciseName;
         this.setNr = setNr;
-        this.wightDist = wightDist;
+        this.weightDist = wightDist;
         this.repsTime = repsTime;
     }
 
@@ -58,12 +58,12 @@ public class Sett {
         this.setNr = setNr;
     }
 
-    public int getWightDist() {
-        return wightDist;
+    public int getWeightDist() {
+        return weightDist;
     }
 
-    public void setWightDist(int wightDist) {
-        this.wightDist = wightDist;
+    public void setWeightDist(int weightDist) {
+        this.weightDist = weightDist;
     }
 
     public int getRepsTime() {
