@@ -7,12 +7,14 @@
 <body>
 
 <h2>New workout</h2>
-<select>
-    <option value="apple">Apple</option>
-</select>
-<p>Set 1</p>
-
-
+<form action="#" th:action="@{/workout}" th:object="${workout}" method="post">
+    <select>
+        <option value="apple">Apple</option>
+    </select>
+    <p>Set 1</p>
+    <input type="text" name="weightDist" id="weightDist" th:field = "*{weightDist}"/>
+    <input type="text" name="repsTime" id="repsTime" th:field = "*{repsTime}"/>
+</form>
 
 </body>
 <script>
