@@ -4,9 +4,9 @@
     <title>Create exercise</title>
 </head>
 <body>
-<h2>Create new exercise</h2>
+<h1>Create new exercise</h1>
 <form action="#" th:action="@{/exercise}" th:object="${exercise}" method="post">
-    <input type="text" name="name" id="name" th:field="*{name}"/>
+    Name: <input type="text" name="name" id="name" th:field="*{name}"/>
     <input type="submit" value="Save" />
 </form>
 <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">

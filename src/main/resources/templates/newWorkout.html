@@ -6,18 +6,58 @@
 </head>
 <body>
 
-<h2>New workout</h2>
+<h1>Log new workout</h1>
 <form action="#" th:action="@{/workout}" th:object="${workout}" method="post">
-    <select>
-        <option value="apple">Apple</option>
-    </select>
-    <p>Set 1</p>
-    <input type="text" name="weightDist" id="weightDist" th:field = "*{weightDist}"/>
-    <input type="text" name="repsTime" id="repsTime" th:field = "*{repsTime}"/>
+
+    <br><br>
+    <div id="container_dd">
+        <select>
+            <option value="0">Squats</option>
+            <option value="1">Bench press</option>
+            <option value="2">Deadlift</option>
+            <option value="3">Shoulder press</option>
+            <option value="4">Leg extentions</option>
+            <option value="5">Leg press</option>
+        </select>
+        <br><br>
+    </div>
+
+
+    <h3>Set 1</h3>
+    Weight / Distance: <input type="text" name="weightDist" id="weightDist"/> <!--th:field = "*{weightDist}"/>-->
+    Reps / Elapsed Time: <input type="text" name="repsTime" id="repsTime"/> <!--th:field = "*{repsTime}"/>-->
+    <br><br>
+    <input type="submit" value="Save workout"/>
 </form>
+<br><br>
+<button onclick="addDropdown()">Add Exercise</button>
+
+<input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 
 </body>
 <script>
+    function addDropdown() {
+        let exercises = ["Squats", "Bench press", "Deadlift", "Shoulder press", "Leg extentions", "Leg press"];
 
+        let newSelect = document.createElement("select");
+        let newDD = document.createElement("div");
+
+        newDD.setAttribute("id", "dropdown");
+        newSelect.setAttribute("id", "exercise");
+        newSelect.setAttribute("name", "exercise");
+
+        for (i=0; i<6; i++) {
+            let newOption = document.createElement("option");
+            newOption.text = exercises[i];
+            newOption.value = i;
+            newSelect.add(newOption);
+        }
+
+        newDD.appendChild(newSelect);
+        newDD.appendChild(document.createElement("br"));
+        newDD.appendChild(document.createElement("br"));
+        document.getElementById("container_dd").appendChild(newDD);
+
+    }
 </script>
 </html>
