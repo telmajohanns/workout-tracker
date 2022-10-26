@@ -10,6 +10,7 @@ public class Sett {
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Workout workout;
+    //TODO breyta í object og hafa manytoone
     private String exercise;
     private int setNr;
     private int weightDist;

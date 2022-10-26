@@ -39,18 +39,6 @@ public class WorkoutController {
     }
 
 
-     //TODO Need to look into the put and how to make it work to save the sets.
-    @RequestMapping(value = "/workout", method = RequestMethod.PUT)
-    public void workoutPUT(Workout workout, HttpSession session, Sett sett){
-        sett.setWorkout(workout);
-        //sett.setRepsTime(repsTime);
-        //sett.setWeightDist(weightDist);
-        //sett.setSetNr(settNr);
-        //sett.setExercise(exercise);
-        settService.save(sett);
-    }
-
-
     @RequestMapping(value = "/workout", method = RequestMethod.POST)
     public String workoutPOST(Workout workout, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
