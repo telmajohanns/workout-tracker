@@ -6,25 +6,32 @@
 </head>
 <body>
 
-
+<h1>Create new workout template</h1>
 <form action="#" th:action="@{/template}" th:object="${template}" method="post">
-  <p>Template name: </p><input type="text" name="name" id="name" th:field = "*{name}"/>
+  Template name: <input type="text" name="name" id="name" th:field = "*{name}"/>
   <br><br>
   <div id="container_dd">
-    <select id="exercises" name="exercise" multiple="true" >
-      <option value="0" >Fyrsti kassinn ehv</option>
-      <option value="1">Annar</option>
+    <select id="exercises" name="exercise">
+      <option value="0">Squats</option>
+      <option value="1">Bench press</option>
+      <option value="2">Deadlift</option>
+      <option value="3">Shoulder press</option>
+      <option value="4">Leg extentions</option>
+      <option value="5">Leg press</option>
     </select>
     <br><br>
   </div>
   <input type="submit" value="Save template" id="submitButton"/>
 </form>
+<br><br>
 <button onclick="addDropdown()">Add Exercise</button>
+
 <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
+
 </body>
 <script>
   function addDropdown() {
-
+    var exercises = ["Squats", "Bench press", "Deadlift", "Shoulder press", "Leg extentions", "Leg press"];
     //var ehv = document.getElementById("prufuid");
 
     var newSelect = document.createElement("select");
@@ -36,8 +43,7 @@
 
     for (i=0; i<5; i++) {
       var newOption = document.createElement("option");
-      var str = "prufa" + i.toString();
-      newOption.text = str;
+      newOption.text = exercises[i];
       newOption.value = i;
       newSelect.add(newOption);
     }
