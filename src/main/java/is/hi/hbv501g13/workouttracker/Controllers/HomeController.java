@@ -19,8 +19,10 @@ public class HomeController {
 
     @RequestMapping(value = "/")
     public String landingPage(){
-        User v = new User("admin", "admin"); //Dummy user, remove later
-        userService.save(v);
+        if(userService.findByUsername("admin") == null) {
+            User v = new User("admin", "admin"); //Dummy user, remove later
+            userService.save(v);
+        }
         return "redirect:/login";
     }
 

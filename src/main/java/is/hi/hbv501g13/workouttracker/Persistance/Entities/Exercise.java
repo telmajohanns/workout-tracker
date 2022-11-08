@@ -1,7 +1,9 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,7 +16,9 @@ public class Exercise {
     private User userID;
     //private Long userID;
     private String name;
-
+    /**@ManyToOne(fetch =  FetchType.LAZY)
+    private List<Template> templates = new ArrayList<>();
+    **/
 
     public Exercise() {
     }

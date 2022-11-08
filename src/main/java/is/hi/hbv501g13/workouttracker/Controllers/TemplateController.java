@@ -39,6 +39,9 @@ public class TemplateController {
         if (sessionUser != null) {
             template.setUser(sessionUser);
 
+            //TODO bæta exercises with model eða einhverstaðar sem við getum náð í þær
+            //og bætt þeim á listann.
+            //template.setExercises(template.getExercises().add(Model.getAttribut(e)));
             //model.addAttribute("exerciseList", template.getExercises());
 
             if (!templateService.checkExists(template.getName()) && template.getName().length() != 0) {
