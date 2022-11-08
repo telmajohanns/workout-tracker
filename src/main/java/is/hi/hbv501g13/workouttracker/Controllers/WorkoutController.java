@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
@@ -40,7 +42,7 @@ public class WorkoutController {
 
 
     @RequestMapping(value = "/workout", method = RequestMethod.POST)
-    public String workoutPOST(Workout workout, BindingResult result, Model model, HttpSession session){
+    public String workoutPOST(@RequestParam(value="workoutID") Workout workout, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
             return "redirect:/workout"; //returns to an empty workout
             //TODO fix it so it stores the date and returns you to the page with your data.
@@ -48,7 +50,13 @@ public class WorkoutController {
 
         List<Template> templates = templateService.findAll();
         model.addAttribute(templates);
+        workout = workoutService.save(workout);
+        model.addAttribute(workout);
+        return "/workout/{workoutID}";
+    }
 
+    @RequestMapping(path="/workout/{workoutID}", method = RequestMethod.GET)
+    public  String loggworkout(@PathVariable String workoutID, Workout workout, BindingResult result, Model model){
         return "/homePage";
     }
 
