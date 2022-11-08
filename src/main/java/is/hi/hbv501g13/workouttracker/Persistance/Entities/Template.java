@@ -57,6 +57,9 @@ public class Template {
         this.exercises.addAll(exercises);
         //this.exercises = exercises;
     }
+    public void addExercise(Exercise exercise) {
+        this.exercises.add(exercise);
+    }
 
     public void setUser(User user) {this.userID = user;}
 }

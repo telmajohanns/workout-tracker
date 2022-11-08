@@ -46,4 +46,6 @@ public class ExerciseServiceImplementation implements ExerciseService {
     public void delete(Exercise exercise){
         exerciseRepository.delete(exercise);
     }
+
+    public List<Exercise> findByUserID(Long ID) {return exerciseRepository.findByUserID(ID);}
 }
