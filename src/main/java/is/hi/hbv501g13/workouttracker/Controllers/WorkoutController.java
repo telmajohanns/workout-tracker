@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
@@ -48,10 +50,17 @@ public class WorkoutController {
 
         List<Template> templates = templateService.findAll();
         model.addAttribute(templates);
-
-        return "/homePage";
+        workoutService.save(workout);
+        model.addAttribute(workout);
+        return "redirect:/currentWorkout";
     }
 
+    @RequestMapping(value = "/currentWorkout", method = RequestMethod.GET)
+    public String currentWorkoutGET(Workout workout, BindingResult result, Model model){
+
+
+        return "currentWorkout";
+    }
 
 
 }
