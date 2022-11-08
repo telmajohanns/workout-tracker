@@ -1,10 +1,8 @@
 package is.hi.hbv501g13.workouttracker.Controllers;
 
-import is.hi.hbv501g13.workouttracker.Persistance.Entities.Exercise;
-import is.hi.hbv501g13.workouttracker.Persistance.Entities.Sett;
-import is.hi.hbv501g13.workouttracker.Persistance.Entities.User;
-import is.hi.hbv501g13.workouttracker.Persistance.Entities.Workout;
+import is.hi.hbv501g13.workouttracker.Persistance.Entities.*;
 import is.hi.hbv501g13.workouttracker.Services.Implementations.SettServiceImplementation;
+import is.hi.hbv501g13.workouttracker.Services.Implementations.TemplateServiceImplementation;
 import is.hi.hbv501g13.workouttracker.Services.Implementations.WorkoutServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,6 +21,7 @@ public class WorkoutController {
 
     private WorkoutServiceImplementation workoutService;
     private SettServiceImplementation settService;
+    private TemplateServiceImplementation templateService;
     private List<Sett> sets;
     private User user;
     private LocalDate date = LocalDate.now();
@@ -46,13 +46,9 @@ public class WorkoutController {
             //TODO fix it so it stores the date and returns you to the page with your data.
         }
 
-        if (user != null){
-            sets = settService.findByWorkout(workout);
-            workout.setDate(date);
-            workout.setUserID(user);
-            workout.setSets(sets);
-            workoutService.save(workout);
-        }
+        List<Template> templates = templateService.findAll();
+        model.addAttribute(templates);
+
         return "/homePage";
     }
 

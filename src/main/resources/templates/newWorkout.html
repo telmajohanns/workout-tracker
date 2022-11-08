@@ -12,52 +12,29 @@
     <br><br>
     <div id="container_dd">
         <select>
-            <option value="0">Squats</option>
-            <option value="1">Bench press</option>
-            <option value="2">Deadlift</option>
-            <option value="3">Shoulder press</option>
-            <option value="4">Leg extentions</option>
-            <option value="5">Leg press</option>
+            <option value="0">New workout</option>
+            <option th:each="workout : ${templates}"
+                    th:value="${workout.getName}"
+                    th:text="${workout.getName}"></option>
         </select>
         <br><br>
     </div>
 
+    <!--<select class="form-control" id="testOrder" name="testOrder">
+        <option value="">Select Test Order</option>
+        <option th:each="test : ${tests}"
+                th:value="${test.testCode}"
+                th:text="${test.testCode}+' : '+${test.testName}"></option>
+    </select> !-->
 
-    <h3>Set 1</h3>
-    Weight / Distance: <input type="text" name="weightDist" id="weightDist"/> <!--th:field = "*{weightDist}"/>-->
-    Reps / Elapsed Time: <input type="text" name="repsTime" id="repsTime"/> <!--th:field = "*{repsTime}"/>-->
-    <br><br>
-    <input type="submit" value="Save workout"/>
+
+    <input type="submit" value="Start workout"/>
 </form>
 <br><br>
-<button onclick="addDropdown()">Add Exercise</button>
 
-<input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
+
+<input type="button" onclick="window.location.href='/homepage'" value="Cancel workout">
 
 </body>
-<script>
-    function addDropdown() {
-        let exercises = ["Squats", "Bench press", "Deadlift", "Shoulder press", "Leg extentions", "Leg press"];
 
-        let newSelect = document.createElement("select");
-        let newDD = document.createElement("div");
-
-        newDD.setAttribute("id", "dropdown");
-        newSelect.setAttribute("id", "exercise");
-        newSelect.setAttribute("name", "exercise");
-
-        for (i=0; i<6; i++) {
-            let newOption = document.createElement("option");
-            newOption.text = exercises[i];
-            newOption.value = i;
-            newSelect.add(newOption);
-        }
-
-        newDD.appendChild(newSelect);
-        newDD.appendChild(document.createElement("br"));
-        newDD.appendChild(document.createElement("br"));
-        document.getElementById("container_dd").appendChild(newDD);
-
-    }
-</script>
 </html>
