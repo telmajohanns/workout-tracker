@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -6,8 +7,8 @@
 <body>
 <h1>Create new exercise</h1>
 <form action="#" th:action="@{/exercise}" th:object="${exercise}" method="post">
-    Name: <input type="text" name="name" id="name" th:field="*{name}"/>
-    <input type="submit" value="Save" />
+    Name: <input type="text" name="name" id="name" th:field="*{name}" placeholder="Name"/>
+    <input type="submit" value="Save exercise" />
 </form>
 <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 </body>

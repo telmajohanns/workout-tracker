@@ -16,17 +16,18 @@ public class Exercise {
     private User userID;
     //private Long userID;
     private String name;
-    /**@ManyToOne(fetch =  FetchType.LAZY)
+    /*@ManyToOne(fetch =  FetchType.LAZY)
     private List<Template> templates = new ArrayList<>();
     **/
-
-    public Exercise() {
-    }
 
     public Exercise(User user, String name) {
         this.userID = user;
         //this.userID = this.user.getID();
         this.name = name;
+    }
+
+    public Exercise() {
+
     }
 
     public Long getID() {
