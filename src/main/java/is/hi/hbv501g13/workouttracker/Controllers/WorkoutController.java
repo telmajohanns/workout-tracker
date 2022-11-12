@@ -29,9 +29,10 @@ public class WorkoutController {
     private LocalDate date = LocalDate.now();
 
     @Autowired
-    public WorkoutController(WorkoutServiceImplementation workoutService, SettServiceImplementation settService){
+    public WorkoutController(WorkoutServiceImplementation workoutService, SettServiceImplementation settService, TemplateServiceImplementation templateService){
         this.workoutService = workoutService;
         this.settService = settService;
+        this.templateService = templateService;
     }
 
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
