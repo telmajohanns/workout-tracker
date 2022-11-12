@@ -1,5 +1,6 @@
 package is.hi.hbv501g13.workouttracker.Services.Implementations;
 
+import is.hi.hbv501g13.workouttracker.Persistance.Entities.User;
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.Workout;
 import is.hi.hbv501g13.workouttracker.Persistance.Repositories.WorkoutRepository;
 import is.hi.hbv501g13.workouttracker.Services.WorkoutService;
@@ -37,7 +38,10 @@ public class WorkoutServiceImplementation implements WorkoutService {
     }
 
     @Override
-    public Workout save(Workout workout) {
+    public Workout save(Workout workout, User user) {
+
+        workout.setUserID(user);
+        workout.setDate(LocalDate.now());
         return workoutRepository.save(workout);
     }
 

@@ -1,6 +1,7 @@
 package is.hi.hbv501g13.workouttracker.Controllers;
 
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.*;
+import is.hi.hbv501g13.workouttracker.Services.Implementations.ExerciseServiceImplementation;
 import is.hi.hbv501g13.workouttracker.Services.Implementations.SettServiceImplementation;
 import is.hi.hbv501g13.workouttracker.Services.Implementations.TemplateServiceImplementation;
 import is.hi.hbv501g13.workouttracker.Services.Implementations.WorkoutServiceImplementation;
@@ -24,15 +25,18 @@ public class WorkoutController {
     private WorkoutServiceImplementation workoutService;
     private SettServiceImplementation settService;
     private TemplateServiceImplementation templateService;
+    private ExerciseServiceImplementation exerciseService;
     private List<Sett> sets;
     private User user;
     private LocalDate date = LocalDate.now();
 
     @Autowired
-    public WorkoutController(WorkoutServiceImplementation workoutService, SettServiceImplementation settService, TemplateServiceImplementation templateService){
+    public WorkoutController(WorkoutServiceImplementation workoutService, SettServiceImplementation settService,
+                             TemplateServiceImplementation templateService, ExerciseServiceImplementation exerciseService){
         this.workoutService = workoutService;
         this.settService = settService;
         this.templateService = templateService;
+        this.exerciseService = exerciseService;
     }
 
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
@@ -51,16 +55,16 @@ public class WorkoutController {
             //TODO fix it so it stores the date and returns you to the page with your data.
         }
         user = (User) session.getAttribute("LoggedInUser");
-        workout.setUserID(user);
-        workout.setDate(date);
-        workoutService.save(workout);
-        model.addAttribute(workout);
+        workoutService.save(workout, user);
+        model.addAttribute("workout", workout);
         return "redirect:/currentWorkout";
     }
 
     @RequestMapping(value = "/currentWorkout", method = RequestMethod.GET)
-    public String currentWorkoutGET(Workout workout, BindingResult result, Model model){
-
+    public String currentWorkoutGET(Workout workout, BindingResult result, Model model, HttpSession session){
+        user = (User) session.getAttribute("LoggedInUser");
+        List<Exercise> exercises = exerciseService.findAll();
+        model.addAttribute("exercises", exercises);
 
         return "currentWorkout";
     }

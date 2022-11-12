@@ -6,6 +6,21 @@
 </head>
 <body>
   <H1>Current workout</H1>
+  <form action="#" th:action="@{/currentWorkout}" th:object="${sett}" method="post">
+    <br><br>
+    <div id="container_dd">
+      <select>
+        <option >prufa</option>
+        <!-- <option th:each="exercise : ${exercises}"
+                th:value="${exercise.getName}"
+                th:text="${exercise.getName}}"></option>
+                Það er villa í þessum kóða !-->
+      </select>
+      <br><br>
+    </div>
+
+    <input type="submit" value="Add set"/>
+  </form>
   <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 </body>
 </html>
