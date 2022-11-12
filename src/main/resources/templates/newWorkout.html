@@ -12,10 +12,11 @@
     <br><br>
     <div id="container_dd">
         <select>
-            <option value="0">New workout</option>
-            <option th:each="workout : ${templates}"
-                    th:value="${workout.getName}"
-                    th:text="${workout.getName}"></option>
+            <option>New workout</option>
+            <option>New workout2</option>
+            <option th:each="template : ${templates}"
+                    th:value="${template.getName}"
+                    th:text="${template.getName}"></option>
         </select>
         <br><br>
     </div>

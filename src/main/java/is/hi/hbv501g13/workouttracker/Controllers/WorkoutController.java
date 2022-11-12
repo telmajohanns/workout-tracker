@@ -36,8 +36,10 @@ public class WorkoutController {
     }
 
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
-    public String workoutGET(Workout workout, HttpSession session){
+    public String workoutGET(Workout workout, HttpSession session, Model model){
         user = (User) session.getAttribute("LoggedInUser");
+        List<Template> templates = templateService.findAll();
+        model.addAttribute("templates", templates);
         return "newWorkout";
     }
 
@@ -48,9 +50,9 @@ public class WorkoutController {
             return "redirect:/workout"; //returns to an empty workout
             //TODO fix it so it stores the date and returns you to the page with your data.
         }
-
-        List<Template> templates = templateService.findAll();
-        model.addAttribute(templates);
+        user = (User) session.getAttribute("LoggedInUser");
+        workout.setUserID(user);
+        workout.setDate(date);
         workoutService.save(workout);
         model.addAttribute(workout);
         return "redirect:/currentWorkout";
