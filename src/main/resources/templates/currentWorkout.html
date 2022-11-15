@@ -6,15 +6,15 @@
 </head>
 <body>
   <H1>Current workout</H1>
-  <form action="#" th:action="@{/currentWorkout}" th:object="${sett}" method="post">
+  <form action="#" th:action="@{/currentWorkout}" th:object="${exercises}" method="post">
     <br><br>
     <div id="container_dd">
       <select>
-        <option >prufa</option>
-        <!-- <option th:each="exercise : ${exercises}"
+        <option >New exercise</option>
+        <option th:each="exercise : ${exercises}"
                 th:value="${exercise.getName}"
-                th:text="${exercise.getName}}"></option>
-                Það er villa í þessum kóða !-->
+                th:text="${exercise.getName}"></option>
+
       </select>
       <br><br>
     </div>

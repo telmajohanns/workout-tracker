@@ -28,7 +28,7 @@ public class ExerciseServiceImplementation implements ExerciseService {
     }
 
     public boolean checkExists(String name) {
-        if (findByName(name) == null) {return false;}
+        if (exerciseRepository.findByName(name) == null) {return false;}
         else {return true;}
     }
 

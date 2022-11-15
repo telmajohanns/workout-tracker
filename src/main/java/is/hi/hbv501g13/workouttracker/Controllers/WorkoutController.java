@@ -51,8 +51,7 @@ public class WorkoutController {
     @RequestMapping(value = "/workout", method = RequestMethod.POST)
     public String workoutPOST(Workout workout, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
-            return "redirect:/workout"; //returns to an empty workout
-            //TODO fix it so it stores the date and returns you to the page with your data.
+            return "redirect:/workout";
         }
         user = (User) session.getAttribute("LoggedInUser");
         workoutService.save(workout, user);
