@@ -15,7 +15,7 @@
 </form:form>
 
 <form action="#" th:action="@{/template}" th:object="${template}" method="post">
-  <p>Template name: ${template.name}</p>
+  <p th:text="@{Template name: } + ${template.getName}"></p>
   <div id="container_dd">
     <select path="${exercises}">
       <option value="0">New xx</option>

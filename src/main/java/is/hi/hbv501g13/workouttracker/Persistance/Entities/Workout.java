@@ -12,7 +12,8 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
     private LocalDate date;
-    @OneToMany(fetch = FetchType.LAZY)
+    //@OneToMany(fetch = FetchType.LAZY)
+    @ElementCollection
     private List<Sett> sets = new ArrayList<>();
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private User userID;

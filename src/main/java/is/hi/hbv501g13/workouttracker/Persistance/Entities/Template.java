@@ -18,17 +18,18 @@ public class Template {
     //private Long userID;
 
 
-    @OneToMany(mappedBy = "userID", fetch = FetchType.LAZY)
-    private List<Exercise> exercises = new ArrayList<>();
+    //@OneToMany(mappedBy = "userID", fetch = FetchType.LAZY)
+    @ElementCollection
+    private List<Exercise> templateExercises = new ArrayList<>();
 
     public Template() {
     }
 
-    public Template(String name, User user, List<Exercise> exercises) {
+    public Template(String name, User user, List<Exercise> templateExercises) {
         this.name = name;
         this.userID = user;
         //this.userID = user.getID();
-        this.exercises = exercises;
+        this.templateExercises = templateExercises;
     }
 
 
@@ -50,15 +51,15 @@ public class Template {
     }
 
     public List<Exercise> getExercises() {
-        return exercises;
+        return templateExercises;
     }
 
-    public void setExercises(List<Exercise> exercises) {
-        this.exercises.addAll(exercises);
+    /*public void setExercises(List<Exercise> exercises) {
+        this.templateExercises.addAll(exercises);
         //this.exercises = exercises;
-    }
+    }*/
     public void addExercise(Exercise exercise) {
-        this.exercises.add(exercise);
+        this.templateExercises.add(exercise);
     }
 
     public void setUser(User user) {this.userID = user;}

@@ -18,14 +18,17 @@ public class User {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Workout> workouts = new ArrayList<>();
+    //@OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ElementCollection
+    private List<Workout> workouts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Exercise> exercises = new ArrayList<>();
+    //@OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ElementCollection
+    private List<Exercise> exercises = new ArrayList<>();
 
-    @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Template> templates = new ArrayList<>();
+    //@OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ElementCollection
+    private List<Template> templates = new ArrayList<>();
 
     public User() {
     }
