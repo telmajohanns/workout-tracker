@@ -55,6 +55,7 @@ public class WorkoutController {
         }
         user = (User) session.getAttribute("LoggedInUser");
         workoutService.save(workout, user);
+        System.out.println("starting workout with id: " + workout.getID());
         model.addAttribute("workout", workout);
         return "redirect:/currentWorkout";
     }
@@ -63,9 +64,17 @@ public class WorkoutController {
     public String currentWorkoutGET(Workout workout, BindingResult result, Model model, HttpSession session){
         user = (User) session.getAttribute("LoggedInUser");
         List<Exercise> exercises = exerciseService.findAll();
-        model.addAttribute("exercises", exercises);
+        return "currentWorkout";
+    }
+
+    @RequestMapping(value = "/currentWorkout", method = RequestMethod.POST)
+    public String currentWorkoutPOST(Workout workout, BindingResult result, Model model, HttpSession session, Sett sett,
+    Exercise exercise) {
+        user = (User) session.getAttribute("LoggedInUser");
+        settService.save(sett, workout, exercise);
 
         return "currentWorkout";
+
     }
 
 

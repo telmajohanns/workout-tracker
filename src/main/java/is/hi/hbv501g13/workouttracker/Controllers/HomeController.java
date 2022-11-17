@@ -3,6 +3,7 @@ package is.hi.hbv501g13.workouttracker.Controllers;
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.Exercise;
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.Template;
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.User;
+import is.hi.hbv501g13.workouttracker.Services.Implementations.ExerciseServiceImplementation;
 import is.hi.hbv501g13.workouttracker.Services.Implementations.TemplateServiceImplementation;
 import is.hi.hbv501g13.workouttracker.Services.Implementations.UserServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,8 @@ public class HomeController {
     private UserServiceImplementation userService;
     @Autowired
     private TemplateServiceImplementation templateService;
-
+    @Autowired
+    private ExerciseServiceImplementation exerciseService;
 
 
     @RequestMapping(value = "/")
@@ -35,6 +37,8 @@ public class HomeController {
             Template t2 = new Template("legs", v, ex);
             templateService.save(t1);
             templateService.save(t2);
+            Exercise exercise = new Exercise(v, "bekkur");
+            exerciseService.save(exercise);
 
         }
         return "redirect:/login";

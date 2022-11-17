@@ -6,7 +6,7 @@
 </head>
 <body>
   <H1>Current workout</H1>
-  <form action="#" th:action="@{/currentWorkout}" th:object="${exercises}" method="post">
+  <form action="#" th:action="@{/currentWorkout}" th:object="${sett}" method="post">
     <br><br>
     <div id="container_dd">
       <select>
@@ -16,6 +16,9 @@
                 th:text="${exercise.getName}"></option>
 
       </select>
+
+      <input type="text" value="reps">
+      <input type="text" value="weight">
       <br><br>
     </div>
 

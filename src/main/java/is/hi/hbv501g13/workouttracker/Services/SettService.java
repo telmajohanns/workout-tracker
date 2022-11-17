@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public interface SettService {
-    Sett save(Sett sett);
+    Sett save(Sett sett, Workout workout, Exercise exercise);
     void delete(Sett sett);
     List<Sett> findAll();
     List<Sett> findByWorkout(Workout workout);

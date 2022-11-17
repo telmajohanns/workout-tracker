@@ -11,7 +11,9 @@ public class Sett {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Workout workout;
     //TODO breyta í object og hafa manytoone
-    private String exercise;
+    @OneToOne
+    @JoinColumn(name = "exercise_id")
+    private Exercise exercise;
     private int setNr;
     private int weightDist;
     private int repsTime;
@@ -19,9 +21,9 @@ public class Sett {
     public Sett() {
     }
 
-    public Sett(Workout workout, String exerciseName, int setNr, int wightDist, int repsTime) {
+    public Sett(Workout workout, Exercise exercise, int setNr, int wightDist, int repsTime) {
         this.workout = workout;
-        this.exercise = exerciseName;
+        this.exercise = exercise;
         this.setNr = setNr;
         this.weightDist = wightDist;
         this.repsTime = repsTime;
@@ -43,11 +45,11 @@ public class Sett {
         this.workout = workout;
     }
 
-    public String getExercise() {
+    public Exercise getExercise() {
         return exercise;
     }
 
-    public void setExercise(String exercise) {
+    public void setExercise(Exercise exercise) {
         this.exercise = exercise;
     }
 

@@ -21,7 +21,13 @@ public class SettServiceImplementation implements SettService {
     }
 
     @Override
-    public Sett save(Sett sett) {
+    public Sett save(Sett sett, Workout workout, Exercise exercise) {
+
+        sett.setExercise(exercise);
+        long id = workout.getID();
+        System.out.println("workout id is: " + id);
+        sett.setWorkout(workout);
+
         return settRepository.save(sett);
     }
 
