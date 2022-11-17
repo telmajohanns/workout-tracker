@@ -22,17 +22,20 @@ import java.util.List;
 public class TemplateController {
 
     private TemplateServiceImplementation templateService;
-    private List<Exercise> exercises = new ArrayList<Exercise>();
 
     private ExerciseServiceImplementation exerciseService;
 
-    public TemplateController(TemplateServiceImplementation templateService) {
+    public TemplateController(TemplateServiceImplementation templateService,
+                              ExerciseServiceImplementation exerciseService) {
         this.templateService = templateService;
+        this.exerciseService = exerciseService;
     }
 
 
     @RequestMapping(value = "/template", method = RequestMethod.GET)
-    public String templateGET(Template template){
+    public String templateGET(Template template, HttpSession session, Model model){
+        List<Exercise> exercises = exerciseService.findAll();
+        model.addAttribute("exercises", exercises);
         return "template";
     }
 
@@ -61,13 +64,19 @@ public class TemplateController {
 
     //VIRKAR EKKI RÉTT
     //Þurfum að ná að sækja exercises sem eru til á LoggedInUser og bæta þeim í dropdown boxið sem options
-    @RequestMapping(value = "/templateAddEx", method = RequestMethod.GET)
-    public String templateAddExGET(Template template, Model model, HttpSession session){
+    /*@RequestMapping(value = "/templateAddEx", method = RequestMethod.GET)
+    public String templateAddExGET(Template template, HttpSession session, Model model){
         //User sessionUser = (User) session.getAttribute("LoggedInUser");
         User sessionUser = (User) session.getAttribute("LoggedInUser");
-        List<Exercise> exercises = exerciseService.findByUserID(sessionUser.getID());
-        model.addAttribute(exercises);
+        List<Exercise> exercises = exerciseService.findAll();
+        model.addAttribute("exercises", exercises);
         //sessionUser.getExercises();
+        return "templateAddEx";
+    }*/
+    @RequestMapping(value = "/templateAddEx", method = RequestMethod.GET)
+    public String templateAddExGET(Exercise exercise, HttpSession session, Model model){
+        List<Exercise> exercises = exerciseService.findAll();
+        model.addAttribute("exercises", exercises);
         return "templateAddEx";
     }
 

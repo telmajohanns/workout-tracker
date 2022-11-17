@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>New Template</title>
@@ -7,33 +7,21 @@
 <body>
 
 <h1>Create new workout template</h1>
-
-<form:form method="post">
-  <form:select path="exercises" items>
-    <form:option value="NONE" label="--"></form:option>
-  </form:select>
-</form:form>
-
 <form action="#" th:action="@{/template}" th:object="${template}" method="post">
   <p th:text="@{Template name: } + ${template.getName}"></p>
+
+  <br><br>
   <div id="container_dd">
-    <select path="${exercises}">
-      <option value="0">New xx</option>
-      <option th:each="template : ${exercises}"></option>
+    <select>
+      <option>New xx</option>
+      <option>New xx2</option>
+      <option th:each="exercise : ${exercises}"
+              th:value="${exercise.getName}"
+              th:text="${exercise.getName}"></option>
     </select>
     <br><br>
   </div>
 
-  <br><br>
- <!-- <select>
-    <option value="0" th:object="${exercise}">Squats</option>
-    <option value="1" th:object="${exercise}">Bench press</option>
-    <option value="2" th:object="${exercise}">Deadlift</option>
-    <option value="3" th:object="${exercise}">Shoulder press</option>
-    <option value="4" th:object="${exercise}">Leg extentions</option>
-    <option value="5" th:object="${exercise}">Leg press</option>
-  </select>
-  <br><br>-->
   <input type="submit" value="Add exercise" id="submitButton"/>
 </form>
 <br><br>
