@@ -50,30 +50,33 @@ public class WorkoutController {
 
     @RequestMapping(value = "/workout", method = RequestMethod.POST)
     public String workoutPOST(Workout workout, BindingResult result, Model model, HttpSession session){
-        if(result.hasErrors()){
+        /**if(result.hasErrors()){
             return "redirect:/workout";
-        }
+        }**/
         user = (User) session.getAttribute("LoggedInUser");
         workoutService.save(workout, user);
-        System.out.println("starting workout with id: " + workout.getID());
-        model.addAttribute("workout", workout);
-        return "redirect:/currentWorkout";
+        return "redirect:/" + workout.getID() + "/currentWorkout";
     }
 
-    @RequestMapping(value = "/currentWorkout", method = RequestMethod.GET)
-    public String currentWorkoutGET(Workout workout, BindingResult result, Model model, HttpSession session){
+    @RequestMapping(value = "/{workoutid}/currentWorkout", method = RequestMethod.GET)
+    public String currentWorkoutGET(Workout workout, BindingResult result, Model model, HttpSession session,
+                                    @PathVariable("workoutid") long workoutid){
         user = (User) session.getAttribute("LoggedInUser");
+        System.out.println(workoutid);
+        workout = workoutService.findByID(workoutid);
         List<Exercise> exercises = exerciseService.findAll();
-        return "currentWorkout";
+        model.addAttribute("exercises", exercises);
+        return "/currentWorkout";
     }
 
-    @RequestMapping(value = "/currentWorkout", method = RequestMethod.POST)
+    @RequestMapping(value = "/{workoutid}/currentWorkout", method = RequestMethod.POST)
     public String currentWorkoutPOST(Workout workout, BindingResult result, Model model, HttpSession session, Sett sett,
-    Exercise exercise) {
+    Exercise exercise, @PathVariable("workoutid") long workoutid) {
+        workout = workoutService.findByID(workoutid);
         user = (User) session.getAttribute("LoggedInUser");
         settService.save(sett, workout, exercise);
 
-        return "currentWorkout";
+        return "/" + workout.getID() + "currentWorkout";
 
     }
 
