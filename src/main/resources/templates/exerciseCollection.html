@@ -5,7 +5,23 @@
     <title>Delete exercise</title>
 </head>
 <body>
-<div th:switch="${exercises}">
+<h1>Exercise Collection</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td th:each="exercise: ${exercises}"
+                th:value="${exercise.getName}"
+                th:text="${exercise.getName}"></td>
+        </tr>
+    </tbody>
+</table>
+<input type="button" onclick="window.location.href='/exercise'" value="Add new exercise">
+<!--<div th:switch="${exercises}">
     <h2 th:case="null">No exercises yet</h2>
     <div th:case="*">
         <h2>Exercises</h2>
@@ -24,8 +40,8 @@
             </tbody>
         </table>
     </div>
-    <input type="button" onclick="window.location.href='/exercise'" value="Add new exercise">
-</div>
+
+</div>-->
 <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 </body>
 </html>
