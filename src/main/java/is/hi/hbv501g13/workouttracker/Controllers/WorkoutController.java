@@ -76,7 +76,7 @@ public class WorkoutController {
         user = (User) session.getAttribute("LoggedInUser");
         settService.save(sett, workout, exercise);
 
-        return "/" + workout.getID() + "currentWorkout";
+        return "currentWorkout";
 
     }
 
