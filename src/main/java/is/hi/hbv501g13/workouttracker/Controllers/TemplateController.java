@@ -38,15 +38,16 @@ public class TemplateController {
         user = (User) session.getAttribute("LoggedInUser");
         List<Exercise> exercises = exerciseService.findByUserID(user);
         model.addAttribute("exercises", exercises);
+        System.out.println("template get methood");
         return "template";
     }
 
     @RequestMapping(value = "/template", method = RequestMethod.POST)
     public String templatePOST(Template template, BindingResult result, Model model, HttpSession session) {
         if (result.hasErrors()) {return "redirect:/template";}
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
-        if (sessionUser != null) {
-            template.setUser(sessionUser);
+        user = (User) session.getAttribute("LoggedInUser");
+        if (user != null) {
+            template.setUser(user);
 
             //TODO bæta exercises with model eða einhverstaðar sem við getum náð í þær
             //og bætt þeim á listann.
@@ -58,7 +59,7 @@ public class TemplateController {
                 session.setAttribute("NewestTemplate", template);
                 model.addAttribute("NewestTemplate", template);
                 System.out.println("Successsss Template");
-                return "templateAddEx";
+                return "redirect:/templateAddEx";
             }
         }
         return "redirect:/template";
@@ -68,33 +69,42 @@ public class TemplateController {
     //Þurfum að ná að sækja exercises sem eru til á LoggedInUser og bæta þeim í dropdown boxið sem options
     /*@RequestMapping(value = "/templateAddEx", method = RequestMethod.GET)
     public String templateAddExGET(Template template, HttpSession session, Model model){
-        //User sessionUser = (User) session.getAttribute("LoggedInUser");
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        //User user = (User) session.getAttribute("LoggedInUser");
+        user = (User) session.getAttribute("LoggedInUser");
         List<Exercise> exercises = exerciseService.findAll();
         model.addAttribute("exercises", exercises);
-        //sessionUser.getExercises();
+        //user.getExercises();
         return "templateAddEx";
     }*/
     @RequestMapping(value = "/templateAddEx", method = RequestMethod.GET)
     public String templateAddExGET(Exercise exercise, HttpSession session, Model model){
-        List<Exercise> exercises = exerciseService.findAll();
+        user = (User) session.getAttribute("LoggedInUser");
+        Template template = (Template) session.getAttribute("NewestTemplate");
+        model.addAttribute("template", template);
+        List<Exercise> exercises = exerciseService.findByUserID(user);
         model.addAttribute("exercises", exercises);
+        System.out.println("Template add ex print");
         return "templateAddEx";
     }
 
     //VIRKAR EKKI RÉTT
     //Þurfum að ná að bæta við völdu exercise á lista af exercises í template-inu þegar ýtt á "Add exercise"
     @RequestMapping(value = "/templateAddEx", method = RequestMethod.POST)
-    public String templateAddExPOST(@ModelAttribute("templateAddEx") Exercise exercise, Model model) {
-        Template sessionTemplate = (Template) model.getAttribute("NewestTemplate");
+    public String templateAddExPOST(Exercise exercise, HttpSession session, Model model) {
+        user = (User) session.getAttribute("LoggedInUser");
+        Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
+        model.addAttribute("template", sessionTemplate);
         sessionTemplate.addExercise(exercise);
+        templateService.save(sessionTemplate);
+        List<Exercise> exercises = exerciseService.findByUserID(user);
+        model.addAttribute("exercises", exercises);
         return "templateAddEx";
     }
     /*
     public String templateAddExPOST(Template template, BindingResult result, Model model, HttpSession session) {
         if (result.hasErrors()) {return "redirect:/templateAddEx";}
 
-        //User sessionUser = (User) session.getAttribute("LoggedInUser");
+        //User user = (User) session.getAttribute("LoggedInUser");
         /*Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
         if (sessionTemplate != null) {
             session.setAttribute("ChosenExercise", exercise);

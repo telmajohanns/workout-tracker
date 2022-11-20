@@ -7,14 +7,11 @@
 <body>
 
 <h1>Create new workout template</h1>
-<form action="#" th:action="@{/template}" th:object="${template}" method="post">
-  <p th:text="@{Template name: } + ${template.getName}"></p>
+<p th:text="@{Template name: } + ${template.getName}"></p>
+<form action="#" th:action="@{/templateAddEx}" th:object="${template}" method="post">
 
-  <br><br>
   <div id="container_dd">
     <select>
-      <option>New xx</option>
-      <option>New xx2</option>
       <option th:each="exercise : ${exercises}"
               th:value="${exercise.getName}"
               th:text="${exercise.getName}"></option>

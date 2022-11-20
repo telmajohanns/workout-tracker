@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Template Collection</title>
+</head>
+<body>
+<h1>Template Collection</h1>
+<table>
+  <thead>
+  <tr>
+    <th th:each="template: ${templates}"
+        th:value="${template.getName}"
+        th:text="${template.getName}">Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="template: ${templates}">
+    <td
+            th:value="${template.getName}"
+            th:text="${template.getName}"></td>
+  </tr>
+  </tbody>
+</table>
+<input type="button" onclick="window.location.href='/exercise'" value="Add new exercise">
+
+<input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
+</body>
+</html>
