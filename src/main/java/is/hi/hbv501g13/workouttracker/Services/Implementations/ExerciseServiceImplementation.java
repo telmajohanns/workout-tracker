@@ -47,5 +47,5 @@ public class ExerciseServiceImplementation implements ExerciseService {
         exerciseRepository.delete(exercise);
     }
 
-    public List<Exercise> findByUserID(Long ID) {return exerciseRepository.findByUserID(ID);}
+    public List<Exercise> findByUserID(User user) {return exerciseRepository.findByUserID(user);}
 }

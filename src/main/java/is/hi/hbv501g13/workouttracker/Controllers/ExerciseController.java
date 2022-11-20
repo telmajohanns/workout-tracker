@@ -21,6 +21,7 @@ import java.util.List;
 @Controller
 public class ExerciseController {
     private ExerciseServiceImplementation exerciseService;
+    private User user;
 
     @Autowired
     public ExerciseController(ExerciseServiceImplementation exerciseService) {
@@ -28,6 +29,7 @@ public class ExerciseController {
     }
 
 
+    /*
     @RequestMapping(value="/exerciseCollection")
     public String exerciseCollection(Model model, HttpSession session){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
@@ -36,7 +38,7 @@ public class ExerciseController {
         //Add some data to the Model
         model.addAttribute("exercises", allExercises);
         return "exerciseCollection";
-    }
+    }*/
 
     @RequestMapping(value = "/exercise", method = RequestMethod.GET)
     public String exerciseGET(Exercise exercise){
@@ -44,7 +46,10 @@ public class ExerciseController {
     }
 
     @RequestMapping(value="/exerciseCollection", method = RequestMethod.GET)
-    public String exerciseCollectionGET(Exercise exercise) {
+    public String exerciseCollectionGET(Exercise exercise, Model model, HttpSession session) {
+        user = (User) session.getAttribute("LoggedInUser");
+        List<Exercise> exercises = exerciseService.findByUserID(user);
+        model.addAttribute("exercises", exercises);
         return "exerciseCollection";
     }
 
