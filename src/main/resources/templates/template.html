@@ -10,25 +10,6 @@
 <form action="#" th:action="@{/template}" th:object="${template}" method="post">
   Template name: <input type="text" name="name" id="name" th:field = "*{name}"/>
   <br><br>
-  <div id="container_dd">
-    <select multiple="true">
-      <option th:each="exercise : ${exercises}"
-              th:value="${exercise.getName}"
-              th:text="${exercise.getName}"></option>
-    </select>
-    <br><br>
-  </div>
-  <!--<div id="container_dd">
-    <select id="exercises" name="exercise">
-      <option value="0">Squats</option>
-      <option value="1">Bench press</option>
-      <option value="2">Deadlift</option>
-      <option value="3">Shoulder press</option>
-      <option value="4">Leg extentions</option>
-      <option value="5">Leg press</option>
-    </select>
-    <br><br>
-  </div>-->
   <input type="submit" value="Create template" id="submitButton"/>
 </form>
 <br><br>

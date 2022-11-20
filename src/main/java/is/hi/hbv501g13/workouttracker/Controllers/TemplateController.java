@@ -90,9 +90,14 @@ public class TemplateController {
     //VIRKAR EKKI RÉTT
     //Þurfum að ná að bæta við völdu exercise á lista af exercises í template-inu þegar ýtt á "Add exercise"
     @RequestMapping(value = "/templateAddEx", method = RequestMethod.POST)
-    public String templateAddExPOST(@ModelAttribute("templateAddEx") Exercise exercise, Model model) {
-        Template sessionTemplate = (Template) model.getAttribute("NewestTemplate");
+    public String templateAddExPOST(Exercise exercise, HttpSession session, Model model) {
+        user = (User) session.getAttribute("LoggedInUser");
+        Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
+        model.addAttribute("template", sessionTemplate);
         sessionTemplate.addExercise(exercise);
+        templateService.save(sessionTemplate);
+        List<Exercise> exercises = exerciseService.findByUserID(user);
+        model.addAttribute("exercises", exercises);
         return "templateAddEx";
     }
     /*
