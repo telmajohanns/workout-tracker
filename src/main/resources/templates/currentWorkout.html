@@ -6,7 +6,7 @@
 </head>
 <body>
   <H1>Current workout</H1>
-  <form action="#" th:action="@{/{workoutid}/currentWorkout}" th:object="${sett}" method="post">
+  <form action="#" th:action="@{/{workoutid}/currentWorkout(workoutid = ${workout.getID})}" th:object="${sett}" method="post">
     <br><br>
     <div id="container_dd">
       <select>
@@ -23,6 +23,9 @@
 
     <input type="submit" value="Add set"/>
   </form>
+  <div>
+    <p>List of finished sets</p>
+  </div>
   <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 </body>
 </html>
