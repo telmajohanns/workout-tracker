@@ -8,16 +8,16 @@
 <h1>Exercise Collection</h1>
 <table>
     <thead>
-        <tr>
-            <th>Name</th>
-        </tr>
+    <tr>
+        <th>Name</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td th:each="exercise: ${exercises}"
-                th:value="${exercise.getName}"
-                th:text="${exercise.getName}"></td>
-        </tr>
+    <tr>
+        <td th:each="exercise: ${exercises}"
+            th:value="${exercise.getName}"
+            th:text="${exercise.getName}"></td>
+    </tr>
     </tbody>
 </table>
 <input type="button" onclick="window.location.href='/exercise'" value="Add new exercise">
@@ -40,7 +40,6 @@
             </tbody>
         </table>
     </div>
-
 </div>-->
 <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 </body>
