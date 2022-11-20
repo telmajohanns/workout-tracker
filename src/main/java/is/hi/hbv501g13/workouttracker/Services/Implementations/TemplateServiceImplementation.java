@@ -1,6 +1,7 @@
 package is.hi.hbv501g13.workouttracker.Services.Implementations;
 
 import is.hi.hbv501g13.workouttracker.Persistance.Entities.Template;
+import is.hi.hbv501g13.workouttracker.Persistance.Entities.User;
 import is.hi.hbv501g13.workouttracker.Persistance.Repositories.TemplateRepository;
 import is.hi.hbv501g13.workouttracker.Services.TemplateService;
 import org.springframework.stereotype.Service;
@@ -38,4 +39,6 @@ public class TemplateServiceImplementation implements TemplateService {
 
     @Override
     public void delete(Template template) { templateRepository.delete(template); }
+
+    public List<Template> findByUserID(User user) { return templateRepository.findByUserID(user); }
 }

@@ -24,6 +24,7 @@ public class TemplateController {
     private TemplateServiceImplementation templateService;
 
     private ExerciseServiceImplementation exerciseService;
+    private User user;
 
     public TemplateController(TemplateServiceImplementation templateService,
                               ExerciseServiceImplementation exerciseService) {
@@ -34,7 +35,8 @@ public class TemplateController {
 
     @RequestMapping(value = "/template", method = RequestMethod.GET)
     public String templateGET(Template template, HttpSession session, Model model){
-        List<Exercise> exercises = exerciseService.findAll();
+        user = (User) session.getAttribute("LoggedInUser");
+        List<Exercise> exercises = exerciseService.findByUserID(user);
         model.addAttribute("exercises", exercises);
         return "template";
     }

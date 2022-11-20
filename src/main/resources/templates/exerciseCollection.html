@@ -13,35 +13,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td th:each="exercise: ${exercises}"
+        <tr th:each="exercise: ${exercises}">
+            <td
                 th:value="${exercise.getName}"
                 th:text="${exercise.getName}"></td>
         </tr>
     </tbody>
 </table>
 <input type="button" onclick="window.location.href='/exercise'" value="Add new exercise">
-<!--<div th:switch="${exercises}">
-    <h2 th:case="null">No exercises yet</h2>
-    <div th:case="*">
-        <h2>Exercises</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="exercise : ${exercises}">
-                <td th:text="${exercise : name}"></td>
-                <td th:text="${exercise : user}"></td>
-                <td><a th:href="@{/delete/{id}(id=${exercise.ID})}">Delete</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 
-</div>-->
 <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 </body>
 </html>

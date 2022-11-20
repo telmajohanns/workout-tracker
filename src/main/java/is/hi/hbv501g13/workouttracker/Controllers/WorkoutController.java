@@ -42,7 +42,7 @@ public class WorkoutController {
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
     public String workoutGET(Workout workout, HttpSession session, Model model){
         user = (User) session.getAttribute("LoggedInUser");
-        List<Template> templates = templateService.findAll();
+        List<Template> templates = templateService.findByUserID(user);
         model.addAttribute("templates", templates);
         return "newWorkout";
     }
@@ -50,9 +50,6 @@ public class WorkoutController {
 
     @RequestMapping(value = "/workout", method = RequestMethod.POST)
     public String workoutPOST(Workout workout, BindingResult result, Model model, HttpSession session){
-        /**if(result.hasErrors()){
-            return "redirect:/workout";
-        }**/
         user = (User) session.getAttribute("LoggedInUser");
         workoutService.save(workout, user);
         return "redirect:/" + workout.getID() + "/currentWorkout";
@@ -64,7 +61,7 @@ public class WorkoutController {
         user = (User) session.getAttribute("LoggedInUser");
         System.out.println(workoutid);
         workout = workoutService.findByID(workoutid);
-        List<Exercise> exercises = exerciseService.findAll();
+        List<Exercise> exercises = exerciseService.findByUserID(user);
         model.addAttribute("exercises", exercises);
         return "/currentWorkout";
     }
