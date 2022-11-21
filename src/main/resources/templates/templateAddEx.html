@@ -11,7 +11,7 @@
 <form action="#" th:action="@{/templateAddEx}" th:object="${template}" method="post">
 
   <div id="container_dd">
-    <select>
+    <select name="exerciseName" id="exerciseName">
       <option th:each="exercise : ${exercises}"
               th:value="${exercise.getName}"
               th:text="${exercise.getName}"></option>
@@ -20,9 +20,10 @@
   </div>
 
   <input type="submit" value="Add exercise" id="submitButton"/>
+  <br>
 </form>
 <br><br>
-
+<input type="button" onclick="window.location.href='/templateCollection'" value="Save template" id="completeButton"/>
 <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
 
 </body>

@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class TemplateController {
 
     private ExerciseServiceImplementation exerciseService;
     private User user;
+    private List<Exercise> templateExercises = new ArrayList<>();
 
     public TemplateController(TemplateServiceImplementation templateService,
                               ExerciseServiceImplementation exerciseService) {
@@ -87,18 +89,32 @@ public class TemplateController {
         return "templateAddEx";
     }
 
-    //VIRKAR EKKI RÉTT
-    //Þurfum að ná að bæta við völdu exercise á lista af exercises í template-inu þegar ýtt á "Add exercise"
+
     @RequestMapping(value = "/templateAddEx", method = RequestMethod.POST)
-    public String templateAddExPOST(Exercise exercise, HttpSession session, Model model) {
+    public String templateAddExPOST(@RequestParam("exerciseName") String exerciseName, HttpSession session, Model model) {
+        System.out.println(exerciseName);
         user = (User) session.getAttribute("LoggedInUser");
         Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
         model.addAttribute("template", sessionTemplate);
-        sessionTemplate.addExercise(exercise);
-        templateService.save(sessionTemplate);
+        templateExercises.add(exerciseService.findByName(exerciseName));
+        //sessionTemplate.addExercise(exerciseService.findByName(exerciseName));
+        //templateService.save(sessionTemplate);
         List<Exercise> exercises = exerciseService.findByUserID(user);
         model.addAttribute("exercises", exercises);
         return "templateAddEx";
+    }
+
+    @RequestMapping(value="/templateCollection", method = RequestMethod.GET)
+    public String templateCollectionGET(HttpSession session, Model model) {
+        user = (User) session.getAttribute("LoggedInUser");
+        Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
+        sessionTemplate.setExercises(templateExercises);
+        templateExercises.clear();
+        templateService.save(sessionTemplate);
+        List<Template> templates = templateService.findByUserID(user);
+        model.addAttribute("templates", templates);
+        System.out.println("Template collection print");
+        return "templateCollection";
     }
     /*
     public String templateAddExPOST(Template template, BindingResult result, Model model, HttpSession session) {

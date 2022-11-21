@@ -54,10 +54,10 @@ public class Template {
         return templateExercises;
     }
 
-    /*public void setExercises(List<Exercise> exercises) {
+    public void setExercises(List<Exercise> exercises) {
         this.templateExercises.addAll(exercises);
         //this.exercises = exercises;
-    }*/
+    }
     public void addExercise(Exercise exercise) {
         this.templateExercises.add(exercise);
     }

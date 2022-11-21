@@ -17,8 +17,9 @@
   <tbody>
   <tr th:each="template: ${templates}">
     <td
-            th:value="${template.getName}"
-            th:text="${template.getName}"></td>
+            th:each="exercise: ${template.getExercises}"
+            th:value="${exercise.getName}"
+            th:text="${exercise.getName}"></td>
   </tr>
   </tbody>
 </table>
