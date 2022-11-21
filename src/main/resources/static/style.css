@@ -1,3 +1,54 @@
-h2 {
-    color: #7E57C2;
+body {
+    background: rgb(134,0,252);
+    background: linear-gradient(76deg, rgba(134,0,252,1) 0%, rgba(229,44,176,1) 100%);
+    text-align: center;
 }
+
+.app-title {
+    font-family: 'Caveat', cursive , sans-serif;
+    font-size: 55px;
+    margin-top: 50px;
+}
+.col-6 {
+    background-color: #FFFBFB;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.form {
+    display: inline-block;
+}
+
+.form-text {
+    border: none;
+    border-bottom: 2px solid grey;
+    margin: 0 0 35px 0;
+    padding: 10px 70px 0 0;
+}
+
+.form-text:focus, input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid grey;
+}
+
+.button {
+    background: rgb(134,0,252);
+    background: linear-gradient(76deg, rgba(134,0,252,1) 0%, rgba(229,44,176,1) 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px 10px 30px;
+    color: white;
+    margin-bottom: 70px;
+    margin-top: 10px;
+    font-family: 'Alexandria', sans-serif;
+    text-decoration: none;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    color: white;
+}
+
+
+
