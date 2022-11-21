@@ -1,16 +1,34 @@
-<!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Signup</title>
+    <title>Workout Tracker - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{style.css}"/>
 </head>
 <body>
-<h2>Signup for an account</h2>
-<form action="#" th:action="@{/signup}" th:object="${user}" method="post">
-    <input type="text" name="username" id="username" th:field="*{username}"/>
-    <input type="password" name="password" id="password" th:field="*{password}"/>
-    <input type="submit" value="Sign up"/>
-</form>
-<input type="button" onclick="window.location.href='/login'" value="Go to Log in">
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <h2 class="app-title mb-3">Create account</h2>
+            <form class="form" action="#" th:action="@{/signup}" th:object="${user}"  method="post">
+                <div class="row">
+                    <input type="text" name="username" id="username" th:field="*{username}" placeholder="Username" class="form-text"/>
+                </div>
+                <div class="row">
+                    <input type="password" name="password" id="password" th:value="*{password}" placeholder="Password" class="form-text"/>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Sign up" class="button"/>
+                </div>
+            </form>
+            <div class="row">
+                <p><a href="/login" class="button">Hompage</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
