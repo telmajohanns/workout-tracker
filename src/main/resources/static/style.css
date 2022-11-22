@@ -1,7 +1,12 @@
+html {
+    height: 100%;
+}
+
 body {
     background: rgb(134,0,252);
     background: linear-gradient(76deg, rgba(134,0,252,1) 0%, rgba(229,44,176,1) 100%);
     text-align: center;
+    min-height:100%;
 }
 
 .app-title {
@@ -9,10 +14,16 @@ body {
     font-size: 55px;
     margin-top: 50px;
 }
+
+.home-title {
+    margin-top: 30px;
+}
+
 .col-6 {
     background-color: #FFFBFB;
     border-radius: 10px;
     margin-top: 40px;
+    padding-bottom: 40px;
 }
 
 .form {
@@ -34,7 +45,7 @@ body {
 
 .button {
     background: rgb(134,0,252);
-    background: linear-gradient(76deg, rgba(134,0,252,1) 0%, rgba(229,44,176,1) 100%);
+    background: linear-gradient(76deg, rgba(229,44,176,1) 0%, rgba(134,0,252,1)100%);
     border: none;
     border-radius: 10px;
     padding: 10px 30px 10px 30px;
@@ -43,12 +54,27 @@ body {
     margin-top: 10px;
     font-family: 'Alexandria', sans-serif;
     text-decoration: none;
+    text-align: center;
 }
 
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     color: white;
 }
+
+.home-buttons {
+    margin-bottom: 10px;
+}
+
+.log-out-button {
+    text-align: end;
+    font-family: 'Alexandria', sans-serif;
+    text-decoration: none;
+    color: black;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
 
 
 

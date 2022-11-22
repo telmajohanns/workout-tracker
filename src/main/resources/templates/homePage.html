@@ -2,14 +2,36 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Workout Tracker</title>
+    <title>Workout Tracker - Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{style.css}"/>
 </head>
 <body>
-
-<input type="button" onclick="window.location.href='/exercise'" value="Exercises">
-<input type="button" onclick="window.location.href='/exerciseCollection'" value="Exercise collection">
-<input type="button" onclick="window.location.href='/workout'" value="Workout">
-<input type="button" onclick="window.location.href='/template'" value="Template">
-<input type="button" onclick="window.location.href='/historical'" value="Historical data">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <p class="log-out-button"><a href="/login" class="log-out-button">Log out</a></p>
+                <h2 class="app-title mb-3 home-title">Homepage</h2>
+                <div class="row-lg">
+                    <input type="button" onclick="window.location.href='/exercise'" value="Exercises" class="button home-buttons">
+                </div>
+                <div class="row-lg">
+                    <input type="button" onclick="window.location.href='/exerciseCollection'" value="Exercise collection" class="button home-buttons">
+                </div>
+                <div class="row-lg">
+                    <input type="button" onclick="window.location.href='/workout'" value="Workout" class="button home-buttons">
+                </div>
+                <div class="row-lg">
+                    <input type="button" onclick="window.location.href='/template'" value="Template" class="button home-buttons">
+                </div>
+                <div class="row-lg">
+                    <input type="button" onclick="window.location.href='/historical'" value="Historical data" class="button home-buttons">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

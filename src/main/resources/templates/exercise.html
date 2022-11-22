@@ -2,14 +2,31 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create exercise</title>
+    <title>Workout tracker - Create new exercise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{style.css}"/>
 </head>
 <body>
-<h1>Create new exercise</h1>
-<form action="#" th:action="@{/exercise}" th:object="${exercise}" method="post">
-    Name: <input type="text" name="name" id="name" th:field="*{name}" placeholder="Name"/>
-    <input type="submit" value="Save exercise" />
-</form>
-<input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <h2 class="app-title mb-3">Create new exercise</h2>
+            <form class="form" action="#" th:action="@{/exercise}" th:object="${exercise}" method="post">
+                <div class="row">
+                    <input type="text" name="name" id="name" th:field="*{name}" placeholder="Exercises name" class="form-text"/>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Save exercise" class="button" />
+                </div>
+            </form>
+            <div class="row-lg">
+                <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage" class="button">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
