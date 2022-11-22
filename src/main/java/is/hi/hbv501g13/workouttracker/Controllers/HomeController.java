@@ -32,13 +32,13 @@ public class HomeController {
         if(userService.findByUsername("admin") == null) {
             User v = new User("admin", "admin"); //Dummy user, remove later
             userService.save(v);
-            List<Exercise> ex = new ArrayList<>();
-            Template t1 = new Template("chest", v, ex);
-            Template t2 = new Template("legs", v, ex);
-            templateService.save(t1);
-            templateService.save(t2);
-            Exercise exercise = new Exercise(v, "bekkur");
-            exerciseService.save(exercise);
+            //List<Exercise> ex = new ArrayList<>();
+            //Template t1 = new Template("chest", v, ex);
+            //Template t2 = new Template("legs", v, ex);
+            //templateService.save(t1);
+            //templateService.save(t2);
+            //Exercise exercise = new Exercise(v, "bekkur");
+            //exerciseService.save(exercise);
 
         }
         return "redirect:/login";

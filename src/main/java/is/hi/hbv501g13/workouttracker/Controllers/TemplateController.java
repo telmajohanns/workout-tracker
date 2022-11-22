@@ -58,6 +58,7 @@ public class TemplateController {
 
             if (!templateService.checkExists(template.getName()) && template.getName().length() != 0) {
                 templateService.save(template);
+
                 session.setAttribute("NewestTemplate", template);
                 model.addAttribute("NewestTemplate", template);
                 System.out.println("Successsss Template");
@@ -108,12 +109,14 @@ public class TemplateController {
     public String templateCollectionGET(HttpSession session, Model model) {
         user = (User) session.getAttribute("LoggedInUser");
         Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
+
         sessionTemplate.setExercises(templateExercises);
         templateExercises.clear();
         templateService.save(sessionTemplate);
         List<Template> templates = templateService.findByUserID(user);
         model.addAttribute("templates", templates);
         System.out.println("Template collection print");
+        session.removeAttribute("NewestTemplate");
         return "templateCollection";
     }
     /*

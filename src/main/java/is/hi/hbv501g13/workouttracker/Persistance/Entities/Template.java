@@ -1,8 +1,11 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "templates")
@@ -20,16 +23,25 @@ public class Template {
 
     //@OneToMany(mappedBy = "userID", fetch = FetchType.LAZY)
     @ElementCollection
-    private List<Exercise> templateExercises = new ArrayList<>();
+    //@CollectionTable(name="template_exercises", joinColumns = @JoinColumn(name="id"))
+    //@Column(name="template_exercises")
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @JoinTable(name="template_exercises", joinColumns = @JoinColumn(name="id"))
+    //@GenericGenerator(strategy = "increment", name="increment")
+    @GeneratedValue(generator = "increment")
+    @CollectionId(column = @Column(name = "template_exercises_id", nullable = false),
+            generator ="increment", type = @Type(type = "long"))
+    private List<Exercise> listOfExercises = new ArrayList<>();
+
 
     public Template() {
     }
 
-    public Template(String name, User user, List<Exercise> templateExercises) {
+    public Template(String name, User user) {
         this.name = name;
         this.userID = user;
         //this.userID = user.getID();
-        this.templateExercises = templateExercises;
+        //this.template_exercises = template_exercises;
     }
 
 
@@ -51,15 +63,15 @@ public class Template {
     }
 
     public List<Exercise> getExercises() {
-        return templateExercises;
+        return listOfExercises;
     }
 
     public void setExercises(List<Exercise> exercises) {
-        this.templateExercises.addAll(exercises);
+        this.listOfExercises.addAll(exercises);
         //this.exercises = exercises;
     }
     public void addExercise(Exercise exercise) {
-        this.templateExercises.add(exercise);
+        this.listOfExercises.add(exercise);
     }
 
     public void setUser(User user) {this.userID = user;}

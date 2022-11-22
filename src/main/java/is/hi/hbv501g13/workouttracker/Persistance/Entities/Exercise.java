@@ -10,18 +10,20 @@ import java.util.Set;
 @Table(name = "exercises")
 public class Exercise {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private User userID;
     private String name;
     /*@ManyToOne(fetch =  FetchType.LAZY)
-    private List<Template> templates = new ArrayList<>();
-    **/
+    private Template template_exercises;*/
+
+
     public Exercise(User user, String name) {
         this.userID = user;
         //this.userID = this.user.getID();
         this.name = name;
+        //this.template_exercises = template_exercises;
     }
     public Exercise() {
 
