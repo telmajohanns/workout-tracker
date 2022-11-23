@@ -19,15 +19,12 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ElementCollection
     private List<Workout> workouts = new ArrayList<>();
 
     @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ElementCollection
     private List<Exercise> exercises = new ArrayList<>();
 
     @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ElementCollection
     private List<Template> templates = new ArrayList<>();
 
     public User() {

@@ -51,11 +51,6 @@ public class TemplateController {
         if (user != null) {
             template.setUser(user);
 
-            //TODO bæta exercises with model eða einhverstaðar sem við getum náð í þær
-            //og bætt þeim á listann.
-            //template.setExercises(template.getExercises().add(Model.getAttribute()));
-            //model.addAttribute("exerciseList", template.getExercises());
-
             if (!templateService.checkExists(template.getName()) && template.getName().length() != 0) {
                 templateService.save(template);
 
@@ -68,17 +63,6 @@ public class TemplateController {
         return "redirect:/template";
     }
 
-    //VIRKAR EKKI RÉTT
-    //Þurfum að ná að sækja exercises sem eru til á LoggedInUser og bæta þeim í dropdown boxið sem options
-    /*@RequestMapping(value = "/templateAddEx", method = RequestMethod.GET)
-    public String templateAddExGET(Template template, HttpSession session, Model model){
-        //User user = (User) session.getAttribute("LoggedInUser");
-        user = (User) session.getAttribute("LoggedInUser");
-        List<Exercise> exercises = exerciseService.findAll();
-        model.addAttribute("exercises", exercises);
-        //user.getExercises();
-        return "templateAddEx";
-    }*/
     @RequestMapping(value = "/templateAddEx", method = RequestMethod.GET)
     public String templateAddExGET(Exercise exercise, HttpSession session, Model model){
         user = (User) session.getAttribute("LoggedInUser");
@@ -98,8 +82,7 @@ public class TemplateController {
         Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
         model.addAttribute("template", sessionTemplate);
         templateExercises.add(exerciseService.findByName(exerciseName));
-        //sessionTemplate.addExercise(exerciseService.findByName(exerciseName));
-        //templateService.save(sessionTemplate);
+
         List<Exercise> exercises = exerciseService.findByUserID(user);
         model.addAttribute("exercises", exercises);
         return "templateAddEx";
@@ -119,30 +102,5 @@ public class TemplateController {
         session.removeAttribute("NewestTemplate");
         return "redirect:/collections";
     }
-    /*
-    public String templateAddExPOST(Template template, BindingResult result, Model model, HttpSession session) {
-        if (result.hasErrors()) {return "redirect:/templateAddEx";}
 
-        //User user = (User) session.getAttribute("LoggedInUser");
-        /*Template sessionTemplate = (Template) session.getAttribute("NewestTemplate");
-        if (sessionTemplate != null) {
-            session.setAttribute("ChosenExercise", exercise);
-            model.addAttribute("ChosenExercise", exercise);
-            sessionTemplate.addExercise((Exercise) model.getAttribute("ChosenExercise"));
-            System.out.println(sessionTemplate.getExercises().get(0).getName());
-            //sessionTemplate.addExercise(exercise);
-            //sessionTemplate.addExercise((Exercise)model.getAttribute(String.valueOf(exercise)));
-
-            //System.out.println(model.getAttribute(String.valueOf(exercise)));
-            //System.out.println("Successsss add " + sessionTemplate.getExercises().get(0).getName());
-            //System.out.println("EX " + exercise.getName());
-            return "redirect:/templateAddEx";
-
-            //TODO bæta exercises with model eða einhverstaðar sem við getum náð í þær
-            //og bætt þeim á listann.
-            //template.setExercises(template.getExercises().add(Model.getAttribute()));
-            //model.addAttribute("exerciseList", template.getExercises());
-        }*/
-       /* return "redirect:/templateAddEx";
-    }*/
 }

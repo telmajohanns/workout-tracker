@@ -17,16 +17,12 @@ public class Exercise {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private User userID;
     private String name;
-    //@ManyToOne(fetch =  FetchType.LAZY)
-    //@JsonBackReference
-    //private Template template_exercises;
+
 
 
     public Exercise(User user, String name) {
         this.userID = user;
-        //this.userID = this.user.getID();
         this.name = name;
-        //this.template_exercises = template_exercises;
     }
     public Exercise() {
 

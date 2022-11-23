@@ -19,18 +19,10 @@ public class Template {
     private String name;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private User userID;
-    //private Long userID;
 
-
-    //@OneToMany(mappedBy = "template_exercises", fetch = FetchType.LAZY)
-    //@JsonManagedReference
     @ElementCollection
-    //@CollectionTable(name="template_exercises", joinColumns = @JoinColumn(name="id"))
-    //@Column(name="template_exercises")
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     @JoinTable(name="template_exercises")
     @JoinColumns({@JoinColumn(name="list_of_exercises_id"), @JoinColumn(name="id")})
-    //@GenericGenerator(strategy = "increment", name="increment")
     @GeneratedValue(generator = "increment")
     @CollectionId(column = @Column(name = "template_exercises_id", nullable = false),
             generator ="increment", type = @Type(type = "long"))
@@ -43,8 +35,7 @@ public class Template {
     public Template(String name, User user) {
         this.name = name;
         this.userID = user;
-        //this.userID = user.getID();
-        //this.template_exercises = template_exercises;
+
     }
 
 
@@ -71,7 +62,6 @@ public class Template {
 
     public void setExercises(List<Exercise> exercises) {
         this.listOfExercises.addAll(exercises);
-        //this.exercises = exercises;
     }
     public void addExercise(Exercise exercise) {
         this.listOfExercises.add(exercise);

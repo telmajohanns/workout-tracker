@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class WorkoutServiceImplementation implements WorkoutService {
-//Steinunn
+
     private WorkoutRepository workoutRepository;
 
 

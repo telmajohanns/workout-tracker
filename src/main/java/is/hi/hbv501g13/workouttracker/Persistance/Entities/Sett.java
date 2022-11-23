@@ -10,7 +10,6 @@ public class Sett {
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Workout workout;
-    //TODO breyta í object og hafa manytoone
     @OneToOne
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;

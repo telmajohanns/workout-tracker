@@ -28,18 +28,6 @@ public class ExerciseController {
         this.exerciseService = exerciseService;
     }
 
-
-    /*
-    @RequestMapping(value="/exerciseCollection")
-    public String exerciseCollection(Model model, HttpSession session){
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
-        //Call a method in a Service Class
-        List<Exercise> allExercises = exerciseService.findByUserID(sessionUser.getID());
-        //Add some data to the Model
-        model.addAttribute("exercises", allExercises);
-        return "exerciseCollection";
-    }*/
-
     @RequestMapping(value = "/exercise", method = RequestMethod.GET)
     public String exerciseGET(Exercise exercise){
         return "exercise";

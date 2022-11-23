@@ -10,8 +10,6 @@ import java.util.List;
 @Repository
 public interface WorkoutRepository extends JpaRepository<Workout, Long> {
 
-
-
     Workout save(Workout workout);
     void delete(Workout workout);
 

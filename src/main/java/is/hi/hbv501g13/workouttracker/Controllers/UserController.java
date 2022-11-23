@@ -52,7 +52,6 @@ public class UserController {
         if(exists != null){
             session.setAttribute("LoggedInUser", exists);
             model.addAttribute("LoggedInUser", exists);
-            //return "LoggedInUser"; No idea what this is.
         }
         return  "redirect:/homepage";
     }
