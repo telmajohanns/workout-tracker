@@ -9,7 +9,7 @@
   <form action="#" th:action="@{/{workoutid}/currentWorkout(workoutid = ${workout.getID})}" th:object="${sett}" method="post">
     <br><br>
     <div id="container_dd">
-      <select>
+      <select name="exerciseName" id="exerciseName">
         <option >New exercise</option>
         <option th:each="exercise : ${exercises}"
                 th:value="${exercise.getName}"

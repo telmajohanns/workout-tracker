@@ -69,14 +69,15 @@ public class WorkoutController {
 
     @RequestMapping(value = "/{workoutid}/currentWorkout", method = RequestMethod.POST)
     public String currentWorkoutPOST(Workout workout, BindingResult result, Model model, HttpSession session, Sett sett,
-                                     Exercise exercise, @PathVariable("workoutid") long workoutid) {
+                                     Exercise exercise, @PathVariable("workoutid") long workoutid,
+                                     @RequestParam("exerciseName") String exerciseName) {
         System.out.println(workoutid);
         workout = workoutService.findByID(workoutid);
         user = (User) session.getAttribute("LoggedInUser");
-        settService.save(sett, workout, exercise);
+        settService.save(sett, workout, exerciseService.findByName(exerciseName));
         System.out.println("currentworkoutpost" + workout.getID());
 
-        return "redirect:/" + workout.getID() + "currentWorkout";
+        return "redirect:/" + workout.getID() + "/currentWorkout";
 
     }
 
