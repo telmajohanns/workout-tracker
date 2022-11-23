@@ -55,7 +55,7 @@ public class WorkoutController {
         return "redirect:/" + workout.getID() + "/currentWorkout";
     }
 
-    @RequestMapping(value = "/currentWorkout", method = RequestMethod.GET)
+    @RequestMapping(value = "/{workoutid}/currentWorkout", method = RequestMethod.GET)
     public String currentWorkoutGET(Workout workout, BindingResult result, Model model, HttpSession session,
                                     @PathVariable("workoutid") long workoutid){
         user = (User) session.getAttribute("LoggedInUser");
