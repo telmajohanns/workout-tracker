@@ -38,7 +38,6 @@ public class HomeController {
             //templateService.save(t1);
             //templateService.save(t2);
             //Exercise exercise = new Exercise(v, "bekkur");
-            //exerciseService.save(exercise);
 
         }
         return "redirect:/login";
