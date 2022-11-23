@@ -64,7 +64,7 @@ public class WorkoutController {
         List<Exercise> exercises = exerciseService.findByUserID(user);
         model.addAttribute("exercises", exercises);
         model.addAttribute("workout", workout);
-        return "/currentWorkout";
+        return "currentWorkout";
     }
 
     @RequestMapping(value = "/{workoutid}/currentWorkout", method = RequestMethod.POST)
