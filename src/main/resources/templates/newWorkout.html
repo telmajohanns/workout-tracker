@@ -13,7 +13,6 @@
     <div id="container_dd">
         <select>
             <option>New workout</option>
-            <option>New workout2</option>
             <option th:each="template : ${templates}"
                     th:value="${template.getName}"
                     th:text="${template.getName}"></option>
