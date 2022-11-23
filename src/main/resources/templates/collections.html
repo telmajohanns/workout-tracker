@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Workout tracker - My Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{style.css}"/>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2 class="app-title mb-3">My Collection</h2>
+      <h3>Exercises</h3>
+      <table>
+        <thead>
+        <tr>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="exercise: ${exercises}">
+          <td
+                  th:value="${exercise.getName}"
+                  th:text="${exercise.getName}"></td>
+        </tr>
+        </tbody>
+      </table>
+      <h3>Templates</h3>
+      <table th:each="template: ${templates}">
+        <thead>
+        <tr>
+          <th th:value="${template.getName}" th:text="${template.getName}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="exercise: ${template.getExercises}">
+          <td th:value="${exercise.getName}"
+                  th:text="${exercise.getName}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<input type="button" onclick="window.location.href='/exercise'" value="Create new exercise">
+<input type="button" onclick="window.location.href='/template'" value="Create new template">
+
+<input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
+</body>
+</html>

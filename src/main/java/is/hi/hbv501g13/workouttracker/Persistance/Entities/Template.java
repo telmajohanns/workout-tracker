@@ -1,5 +1,6 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -21,12 +22,14 @@ public class Template {
     //private Long userID;
 
 
-    //@OneToMany(mappedBy = "userID", fetch = FetchType.LAZY)
+    //@OneToMany(mappedBy = "template_exercises", fetch = FetchType.LAZY)
+    //@JsonManagedReference
     @ElementCollection
     //@CollectionTable(name="template_exercises", joinColumns = @JoinColumn(name="id"))
     //@Column(name="template_exercises")
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    @JoinTable(name="template_exercises", joinColumns = @JoinColumn(name="id"))
+    @JoinTable(name="template_exercises")
+    @JoinColumns({@JoinColumn(name="list_of_exercises_id"), @JoinColumn(name="id")})
     //@GenericGenerator(strategy = "increment", name="increment")
     @GeneratedValue(generator = "increment")
     @CollectionId(column = @Column(name = "template_exercises_id", nullable = false),

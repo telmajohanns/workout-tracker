@@ -117,7 +117,7 @@ public class TemplateController {
         model.addAttribute("templates", templates);
         System.out.println("Template collection print");
         session.removeAttribute("NewestTemplate");
-        return "templateCollection";
+        return "redirect:/collections";
     }
     /*
     public String templateAddExPOST(Template template, BindingResult result, Model model, HttpSession session) {

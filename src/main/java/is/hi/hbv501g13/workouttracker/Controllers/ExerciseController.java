@@ -45,20 +45,6 @@ public class ExerciseController {
         return "exercise";
     }
 
-    @RequestMapping(value="/exerciseCollection", method = RequestMethod.GET)
-    public String exerciseCollectionGET(Exercise exercise, Model model, HttpSession session) {
-        user = (User) session.getAttribute("LoggedInUser");
-        List<Exercise> exercises = exerciseService.findByUserID(user);
-        model.addAttribute("exercises", exercises);
-        return "exerciseCollection";
-    }
-
-    @RequestMapping(value = "/exerciseCollection", method = RequestMethod.POST)
-    public String exerciseCollectionPOST(Exercise exercise,  BindingResult result, Model model) {
-        if(result.hasErrors()) {return "redirect:/homePage";}
-        return "exercise";
-    }
-
 
     @RequestMapping(value = "/exercise", method = RequestMethod.POST)
     public String exercisePOST(Exercise exercise, BindingResult result, Model model, HttpSession session){
@@ -71,11 +57,11 @@ public class ExerciseController {
             if (!exerciseService.checkExists(exercise.getName()) && exercise.getName().length() != 0) {
                 exerciseService.save(exercise);
                 System.out.println("Successsss");
-                return "redirect:/exerciseCollection";
+                return "redirect:/collections";
             }
         }
 
-        return "redirect:/exerciseCollection";
+        return "redirect:/collections";
 
     }
 

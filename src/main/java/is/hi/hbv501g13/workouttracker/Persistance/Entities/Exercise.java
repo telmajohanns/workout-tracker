@@ -1,5 +1,7 @@
 package is.hi.hbv501g13.workouttracker.Persistance.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,8 +17,9 @@ public class Exercise {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private User userID;
     private String name;
-    /*@ManyToOne(fetch =  FetchType.LAZY)
-    private Template template_exercises;*/
+    //@ManyToOne(fetch =  FetchType.LAZY)
+    //@JsonBackReference
+    //private Template template_exercises;
 
 
     public Exercise(User user, String name) {
