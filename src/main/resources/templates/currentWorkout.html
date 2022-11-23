@@ -3,29 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>New workout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{style.css}"/>
 </head>
 <body>
-  <H1>Current workout</H1>
-  <form action="#" th:action="@{/{workoutid}/currentWorkout(workoutid = ${workout.getID})}" th:object="${sett}" method="post">
-    <br><br>
-    <div id="container_dd">
-      <select name="exerciseName" id="exerciseName">
-        <option >New exercise</option>
-        <option th:each="exercise : ${exercises}"
-                th:value="${exercise.getName}"
-                th:text="${exercise.getName}"></option>
-
-      </select>
-      <input type="text" placeholder="reps">
-      <input type="text" placeholder="weight">
-      <br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <p class="log-out-button"><a href="/homepage" class="log-out-button">Back to homepage</a></p>
+      <h2 class="app-title mb-3 home-title">Current workout</h2>
+      <form class="form" action="#" th:action="@{/{workoutid}/currentWorkout(workoutid = ${workout.getID})}" th:object="${sett}" method="post">
+        <div class="row-lg">
+          <select class="dropdown-button" name="exerciseName" id="exerciseName">
+            <option >New exercise</option>
+            <option th:each="exercise : ${exercises}"
+                    th:value="${exercise.getName}"
+                    th:text="${exercise.getName}"></option>
+          </select>
+          <input type="text" placeholder="reps" class="form-text">
+          <input type="text" placeholder="weight" class="form-text">
+        </div>
+        <div class="row-lg">
+          <input type="submit" value="Add set" class="button home-buttons"/>
+        </div>
+      </form>
     </div>
-
-    <input type="submit" value="Add set"/>
-  </form>
-  <div>
-    <p>List of finished sets</p>
   </div>
-  <input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
+</div>
 </body>
 </html>
