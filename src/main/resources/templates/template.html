@@ -2,47 +2,29 @@
 <html xmlns:th="http://thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>New Template</title>
+  <title>Workout tracker - Create new Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{style.css}"/>
 </head>
 <body>
-
-<h1>Create new workout template</h1>
-<form action="#" th:action="@{/template}" th:object="${template}" method="post">
-  Template name: <input type="text" name="name" id="name" th:field = "*{name}"/>
-  <br><br>
-  <input type="submit" value="Create template" id="submitButton"/>
-</form>
-<br><br>
-<!--<button onclick="addDropdown()">Add Exercise</button>-->
-
-<input type="button" onclick="window.location.href='/homepage'" value="Back to homepage">
-
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <p class="log-out-button"><a href="/homepage" class="log-out-button">Back to homepage</a></p>
+      <h2 class="app-title mb-3 home-title">Create new workout template</h2>
+      <form class="form" action="#" th:action="@{/template}" th:object="${template}" method="post">
+        <div class="row">
+          <input type="text" name="name" id="name" th:field = "*{name}" class="form-text"/>
+        </div>
+        <div class="row">
+          <input type="submit" value="Create template" id="submitButton" class="button home-buttons"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 </body>
-<!--
-<script>
-  function addDropdown() {
-    var exercises = ["Squats", "Bench press", "Deadlift", "Shoulder press", "Leg extentions", "Leg press"];
-    //var ehv = document.getElementById("prufuid");
-
-    var newSelect = document.createElement("select");
-    var newDD = document.createElement("div");
-
-    newDD.setAttribute("id", "dropdown");
-    newSelect.setAttribute("id", "exercise");
-    newSelect.setAttribute("name", "exercise");
-
-    for (i=0; i<5; i++) {
-      var newOption = document.createElement("option");
-      newOption.text = exercises[i];
-      newOption.value = i;
-      newSelect.add(newOption);
-    }
-
-    newDD.appendChild(newSelect);
-    newDD.appendChild(document.createElement("br"));
-    newDD.appendChild(document.createElement("br"));
-    document.getElementById("container_dd").appendChild(newDD);
-
-  }
-</script>-->
 </html>

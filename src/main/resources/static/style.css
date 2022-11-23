@@ -19,6 +19,10 @@ h5 {
     font-family: 'Alexandria', sans-serif;
 }
 
+p {
+    font-family: 'Alexandria', sans-serif;
+}
+
 .home-title {
     margin-top: 30px;
 }
@@ -82,6 +86,19 @@ h5 {
 table, td, tr {
     border-bottom: 1px solid black;
     font-family: 'Alexandria', sans-serif;
+    width: 100%;
+}
+
+
+.dropdown-button {
+    border: rgb(134,0,252) 1px solid;
+    border-radius: 10px;
+    padding: 10px 30px 10px 30px;
+    margin-bottom: 70px;
+    margin-top: 10px;
+    font-family: 'Alexandria', sans-serif;
+    text-decoration: none;
+    text-align: start;
 }
 
 
