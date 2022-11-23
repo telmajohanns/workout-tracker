@@ -40,7 +40,7 @@ public class HomeController {
             //Exercise exercise = new Exercise(v, "bekkur");
 
         }
-        return "redirect:/login";
+        return "redirect:login";
     }
 
     @RequestMapping(value = "/homepage")
