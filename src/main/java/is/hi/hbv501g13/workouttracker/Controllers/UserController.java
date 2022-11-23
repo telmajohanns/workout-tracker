@@ -29,13 +29,13 @@ public class UserController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signupPOST(User user, BindingResult result, Model model){
         if(result.hasErrors()){
-            return "redirect:/signup";
+            return "redirect:signup";
         }
         User exists = userService.findByUsername(user.getUsername());
         if(exists == null){
             userService.save(user);
         }
-        return "redirect:/login";
+        return "redirect:login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class UserController {
             session.setAttribute("LoggedInUser", exists);
             model.addAttribute("LoggedInUser", exists);
         }
-        return  "redirect:/homepage";
+        return  "redirect:homepage";
     }
 
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
