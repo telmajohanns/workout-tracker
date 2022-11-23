@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>New workout</title>
+  <title>Workout tracker - New Workout</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Caveat:wght@600&display=swap" rel="stylesheet">
@@ -10,28 +10,28 @@
   <link rel="stylesheet" th:href="@{style.css}"/>
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-6 mx-auto">
-      <p class="log-out-button"><a href="/homepage" class="log-out-button">Back to homepage</a></p>
-      <h2 class="app-title mb-3 home-title">Current workout</h2>
-      <form class="form" action="#" th:action="@{/{workoutid}/currentWorkout(workoutid = ${workout.getID})}" th:object="${sett}" method="post">
-        <div class="row-lg">
-          <select class="dropdown-button" name="exerciseName" id="exerciseName">
-            <option >New exercise</option>
-            <option th:each="exercise : ${exercises}"
-                    th:value="${exercise.getName}"
-                    th:text="${exercise.getName}"></option>
-          </select>
-          <input type="text" placeholder="Reps" class="form-text">
-          <input type="text" placeholder="Weight" class="form-text">
-        </div>
-        <div class="row-lg">
-          <input type="submit" value="Add set" class="button home-buttons"/>
-        </div>
-      </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <p class="log-out-button"><a href="/homepage" class="log-out-button">Back to homepage</a></p>
+        <h2 class="app-title mb-3 home-title">Current workout</h2>
+        <form class="form" action="#" th:action="@{/{workoutid}/currentWorkout(workoutid = ${workout.getID})}" th:object="${sett}" method="post">
+          <div class="row-lg">
+            <select class="dropdown-button" name="exerciseName" id="exerciseName">
+              <option>New exercise</option>
+              <option th:each="exercise : ${exercises}"
+                      th:value="${exercise.getName}"
+                      th:text="${exercise.getName}"></option>
+            </select>
+            <input type="text" placeholder="Reps" class="form-text">
+            <input type="text" placeholder="Weight" class="form-text">
+          </div>
+          <div class="row-lg">
+            <input type="submit" value="Add set" class="button home-buttons"/>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </body>
 </html>
