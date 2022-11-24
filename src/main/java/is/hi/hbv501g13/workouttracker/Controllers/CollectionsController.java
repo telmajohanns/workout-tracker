@@ -28,12 +28,9 @@ public class CollectionsController {
     @RequestMapping(value="/collections", method = RequestMethod.GET)
     public String collectionsGET(HttpSession session, Model model) {
         user = (User) session.getAttribute("LoggedInUser");
-        System.out.println("User: " + user.getID());
         List<Exercise> exercises = exerciseService.findByUserID(user);
-        //session.setAttribute("exercises", exercises);
         model.addAttribute("exercises", exercises);
         List<Template> templates = templateService.findByUserID(user);
-        //session.setAttribute("templates",templates);
         model.addAttribute("templates", templates);
         return "collections";
     }

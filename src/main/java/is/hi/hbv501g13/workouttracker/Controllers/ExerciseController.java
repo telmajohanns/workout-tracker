@@ -44,13 +44,10 @@ public class ExerciseController {
             exercise.setUser(sessionUser);
             if (!exerciseService.checkExists(exercise.getName()) && exercise.getName().length() != 0) {
                 exerciseService.save(exercise);
-                System.out.println("Successsss");
                 return "redirect:/collections";
             }
         }
-
         return "redirect:/collections";
-
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

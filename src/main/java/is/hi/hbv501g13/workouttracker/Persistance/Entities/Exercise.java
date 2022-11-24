@@ -18,14 +18,11 @@ public class Exercise {
     private User userID;
     private String name;
 
-
-
     public Exercise(User user, String name) {
         this.userID = user;
         this.name = name;
     }
     public Exercise() {
-
     }
 
     public Long getID() {
